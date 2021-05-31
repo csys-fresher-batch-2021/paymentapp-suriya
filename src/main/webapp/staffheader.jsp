@@ -48,6 +48,9 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
                <li class="nav-item active">
                <a class="nav-link" href="stafflogin.jsp?">Login</a>
              </li>
+              <li class="nav-item active">
+               <a class="nav-link" href="staffregister.jsp?">Register</a>
+              </li>
              
            <% } %>
       

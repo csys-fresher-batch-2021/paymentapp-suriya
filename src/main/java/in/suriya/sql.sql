@@ -6,6 +6,8 @@ password varchar(50) not null unique
 
 insert into staff (name,mobno,password) values('Harish',9003750359,'Harish1#');
 insert into staff (name,mobno,password) values('Suriya',9500500452,'Suriya1@');
+
+
 select *from staff;
 delete from staff;
 drop table staff;
