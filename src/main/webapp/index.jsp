@@ -16,7 +16,7 @@
 		
 <a href="stafflogin.jsp">Staff</a>	
 <br/>
-<a href="">Student</a>
+<a href="studentlogin.jsp">Student</a>
 <br/>	
 	
 	</main>
