@@ -51,8 +51,7 @@ public class StaffChangePasswordServlet extends HttpServlet {
 			
 			
 		}catch(Exception e) {
-			String message = e.getMessage();
-			  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + message);
+			  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + e.getMessage());
 		}
 		
 		

@@ -17,7 +17,8 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <h2>Welcome !!!!!</h2>
 <a href="staffchangepassword.jsp">change password</a>
 <br/>
-
+<a href="addstudentdetails.jsp">Register student</a>
+<br/>
 </main>
 </body>
 </html>
