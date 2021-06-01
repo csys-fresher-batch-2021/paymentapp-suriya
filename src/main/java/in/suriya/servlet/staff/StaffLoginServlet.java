@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.suriya.service.staff.StaffLoginAndRegisterService;
+import in.suriya.util.Validation;
 
 /**
  * Servlet implementation class StaffServlet
@@ -22,32 +23,32 @@ public class StaffLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IllegalArgumentException {
 		
 		try{
-		  Long mobileNo =Long.parseLong(request.getParameter("mobileNo"));
+		  long mobileNumber = Validation.parseLong(request.getParameter("mobileNo"), "Invalid Mobile number");
           String password = request.getParameter("password");
-
-		  String staffName = StaffLoginAndRegisterService.staffValidater(mobileNo,password);
-
+          
+          
+		  String staffName = StaffLoginAndRegisterService.staffValidater(mobileNumber,password);
+          
 		  if (staffName!=null) {
 			  HttpSession session=request.getSession();
 			  session.setAttribute("LOGGED_IN_STAFF",staffName);
 			  session.setAttribute("PASSWORD",password);//to use in change password
-			  session.setAttribute("STAFF_MOBNO",mobileNo);
+			  session.setAttribute("STAFF_MOBNO",mobileNumber);
 			  
 			  String message = "succesfully Logged in"+staffName;
 			  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  
 		  }else {
-			  String message = "invalid Login Credentials";
-			  response.sendRedirect("stafflogin.jsp?infoMessage=" + message);
+			
+			  response.sendRedirect("stafflogin.jsp?infoMessage=invalid Login Credentials");
 			  
 		  }
 		}catch(Exception e) {
 			
-			String message =e.getMessage();
-			response.sendRedirect("stafflogin.jsp?errorMessage=" + message);
+			response.sendRedirect("stafflogin.jsp?errorMessage="+e.getMessage() );
 			
 		}
 		

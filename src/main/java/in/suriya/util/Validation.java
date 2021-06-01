@@ -15,6 +15,7 @@ public class Validation {
 	 * 
 	 * @param mobNo
 	 * @return
+	 * @throws Exception 
 	 */
 	
 	public static void mobNoValidater(long mobNo) throws Exception {
@@ -23,10 +24,34 @@ public class Validation {
 		Pattern p = Pattern.compile(check);
 		Matcher m = p.matcher(String.valueOf(mobNo));
 		isMobNoValid =m.matches();
+		
 		if(!isMobNoValid)throw new Exception("Invalid MobileNo Format");
 		
 
 	}
+	
+	
+	
+	public static long parseLong(String input, String errorMessage) throws Exception {
+		try {
+			return  Long.parseLong(input);
+		}
+		catch(NumberFormatException e) {
+			throw new Exception(errorMessage);
+		}
+	}
+	
+	
+	public static int parseInt(String input, String errorMessage) throws Exception {
+		try {
+			return  Integer.parseInt(input);
+		}
+		catch(NumberFormatException e) {
+			throw new Exception(errorMessage);
+		}
+	}
+	
+	
 	
 	
 	
