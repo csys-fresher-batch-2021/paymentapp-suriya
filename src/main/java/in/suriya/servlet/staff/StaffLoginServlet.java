@@ -26,7 +26,8 @@ public class StaffLoginServlet extends HttpServlet {
 		
 		try{
 		  Long mobileNo =Long.parseLong(request.getParameter("mobileNo"));
-		  String password = request.getParameter("password");
+          String password = request.getParameter("password");
+
 		  String staffName = StaffLoginAndRegisterService.staffValidater(mobileNo,password);
 
 		  if (staffName!=null) {
@@ -46,10 +47,10 @@ public class StaffLoginServlet extends HttpServlet {
 		}catch(Exception e) {
 			
 			String message =e.getMessage();
+			//String message="hai";
 			response.sendRedirect("stafflogin.jsp?errorMessage=" + message);
 			
 		}
-		
 		
 	}
 
