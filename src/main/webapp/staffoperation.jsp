@@ -15,7 +15,8 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <jsp:include page="staffheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <h2>Welcome !!!!!</h2>
-
+<a href="staffchangepassword.jsp">change password</a>
+<br/>
 
 </main>
 </body>
