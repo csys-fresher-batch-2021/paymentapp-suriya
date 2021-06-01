@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.suriya.service.student.StudentLoginService;
+import in.suriya.util.Validation;
 
 /**
  * Servlet implementation class StudentServlet
@@ -25,9 +26,9 @@ public class StudentLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			long rollNo=Long.parseLong(request.getParameter("rollNo"));
-			long MobNo=Long.parseLong(request.getParameter("mobileNumber"));
-			boolean Valid=StudentLoginService.studentValidater(rollNo, MobNo);			
+			long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
+			long mobNo = Validation.parseLong(request.getParameter("mobileNumber"), "Invalid Mobile number");
+			boolean Valid=StudentLoginService.studentValidater(rollNo, mobNo);			
 		
 			if(Valid) {
 				 HttpSession session=request.getSession();
