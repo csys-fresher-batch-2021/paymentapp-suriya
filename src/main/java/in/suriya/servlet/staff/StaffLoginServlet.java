@@ -47,7 +47,6 @@ public class StaffLoginServlet extends HttpServlet {
 		}catch(Exception e) {
 			
 			String message =e.getMessage();
-			//String message="hai";
 			response.sendRedirect("stafflogin.jsp?errorMessage=" + message);
 			
 		}
