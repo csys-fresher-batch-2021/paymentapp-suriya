@@ -30,44 +30,6 @@ public class Validation {
 
 	}
 	
-	/**
-	 * parseLong method used to give error message long parse
-	 * 
-	 * @param input
-	 * @param errorMessage
-	 * @return
-	 * @throws Exception
-	 */
-	
-	public static long parseLong(String input, String errorMessage) throws Exception {
-		try {
-			return  Long.parseLong(input);
-		}
-		catch(NumberFormatException e) {
-			throw new Exception(errorMessage);
-		}
-	}
-	
-	
-	/**
-	 * parseInt method  used to give error message fot int parse
-	 * @param input
-	 * @param errorMessage
-	 * @return
-	 * @throws Exception
-	 */
-	
-	public static int parseInt(String input, String errorMessage) throws Exception {
-		try {
-			return  Integer.parseInt(input);
-		}
-		catch(NumberFormatException e) {
-			throw new Exception(errorMessage);
-		}
-	}
-	
-	
-	
 	
 	
 
@@ -120,6 +82,45 @@ public class Validation {
 	
 	}
 	
+	
+	
+	
+	
+	/**
+	 * parseLong method used to give error message long parse
+	 * 
+	 * @param input
+	 * @param errorMessage
+	 * @return
+	 * @throws Exception
+	 */
+	
+	public static long parseLong(String input, String errorMessage) throws Exception {
+		try {
+			return  Long.parseLong(input);
+		}
+		catch(NumberFormatException e) {
+			throw new Exception(errorMessage);
+		}
+	}
+	
+	
+	/**
+	 * parseInt method  used to give error message fot int parse
+	 * @param input
+	 * @param errorMessage
+	 * @return
+	 * @throws Exception
+	 */
+	
+	public static int parseInt(String input, String errorMessage) throws Exception {
+		try {
+			return  Integer.parseInt(input);
+		}
+		catch(NumberFormatException e) {
+			throw new Exception(errorMessage);
+		}
+	}
 	
 	
 	
