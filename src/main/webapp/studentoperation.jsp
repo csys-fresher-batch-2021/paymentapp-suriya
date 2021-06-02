@@ -17,6 +17,7 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <h2>Welcome !!!!!</h2>
 <a href="studentpayment.jsp">Pay Fee</a>
 <br/>
+<a href="DisplayPersonalDetailsServlet"> Personal Details </a>
 
 
 </main>
