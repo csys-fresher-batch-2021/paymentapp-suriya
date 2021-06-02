@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%if((String)session.getAttribute("LOGGED_IN_STUDENT")==null){
 	response.sendRedirect("studentlogin.jsp");
-	}
+}
 String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <!DOCTYPE html>
@@ -14,11 +14,20 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <body>
 <jsp:include page="studentheader.jsp"></jsp:include>
 	<main class="container-fluid">
-<h2>Welcome !!!!!</h2>
-<a href="studentpayment.jsp">Pay Fee</a>
-<br/>
+<div align="center">
+<form action="StudentPaymentServlet" method="get">
+<h4>Payment details</h4>
+<table>
+   <tr><td><label for="fee">Fee:</label></td>
+       <td><input type="number" name="fee"placeholder="Enter fee to pay" required autofocus></td></tr>
+</table>
 
+<button type="submit">Submit</button>
+</form>
+</div>
+	
+	
+</main>	
 
-</main>
 </body>
 </html>
