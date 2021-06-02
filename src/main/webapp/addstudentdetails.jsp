@@ -26,7 +26,7 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
         <td> <input type="number" name="mobileNo" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16}$"  placeholder="Enter 10-digit mobile number" required></td></tr>
 
  <tr><td><label for="fee">Fee:</label></td>
-        <td> <input type="number" name="fee"  placeholder="Enter fee " required></td></tr>
+        <td> <input type="number" name="fee"  placeholder="Enter fee<100000 " required></td></tr>
 
 
 </table>

@@ -30,7 +30,14 @@ public class Validation {
 
 	}
 	
-	
+	/**
+	 * parseLong method used to give error message long parse
+	 * 
+	 * @param input
+	 * @param errorMessage
+	 * @return
+	 * @throws Exception
+	 */
 	
 	public static long parseLong(String input, String errorMessage) throws Exception {
 		try {
@@ -41,6 +48,14 @@ public class Validation {
 		}
 	}
 	
+	
+	/**
+	 * parseInt method  used to give error message fot int parse
+	 * @param input
+	 * @param errorMessage
+	 * @return
+	 * @throws Exception
+	 */
 	
 	public static int parseInt(String input, String errorMessage) throws Exception {
 		try {
@@ -101,7 +116,7 @@ public class Validation {
     */
 	
 	public static void feeValidater(int fee)throws Exception {
-		if(fee<=0)throw new Exception("Invalid Fee");
+		if(fee<=0 || fee>100000)throw new Exception("Invalid Fee");
 	
 	}
 	
