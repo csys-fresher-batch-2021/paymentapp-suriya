@@ -14,7 +14,7 @@ drop table staff;
 
 
 create table student(
-rollno bigint unique,
+rollno bigint not null unique,
 mobno bigint not null,
 fee int not null,
 payment_status varchar(20) default 'Not_paid'
