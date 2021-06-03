@@ -117,6 +117,7 @@ public class StudentDAO {
              rs =pst.executeQuery();
              while(rs.next()) {
                   isValid=true;
+              
              }
              
 		}catch(ClassNotFoundException | SQLException e) {
