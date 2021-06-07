@@ -25,7 +25,7 @@ public class StaffDAO {
 	 * @throws SQLException
 	 */
 	
-	public static String findStaff(long mobNo,String password) throws ClassNotFoundException, SQLException {
+	public static String findStaff(Staff staff) throws ClassNotFoundException, SQLException {
 		String staffName=null;
 		Connection connection=null;
 		PreparedStatement pst=null;
@@ -35,8 +35,8 @@ public class StaffDAO {
            String sql="select (name) from staff where mobno=? and password=?";
         
            pst=connection.prepareStatement(sql);
-           pst.setLong(1, mobNo);
-           pst.setString(2, password);
+           pst.setLong(1, staff.getMobNo());
+           pst.setString(2,staff.getPassword());
         
            rs =pst.executeQuery();
            while(rs.next()) {
@@ -98,7 +98,7 @@ public class StaffDAO {
 	 * @throws SQLException
 	 */
 	
-    public static boolean updatePassword(String password,Long mobNo) throws ClassNotFoundException, SQLException {
+    public static boolean updatePassword(Staff staff) throws ClassNotFoundException, SQLException {
     	boolean isUpdate=false;
     	Connection connection=null;
 		PreparedStatement pst=null;
@@ -108,8 +108,8 @@ public class StaffDAO {
 		   String sql="update staff set password=? where mobno=? ";
 		
 		   pst=connection.prepareStatement(sql);
-		   pst.setString(1,password);
-		   pst.setLong(2,mobNo);
+		   pst.setString(1,staff.getPassword());
+		   pst.setLong(2,staff.getMobNo());
 		
 		   int rows=pst.executeUpdate();
 	       if(rows==1) {

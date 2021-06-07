@@ -1,6 +1,7 @@
 package in.suriya.service.student;
 
 import in.suriya.dao.StudentDAO;
+import in.suriya.model.Student;
 import in.suriya.util.Validation;
 
 public class StudentLoginService {
@@ -23,7 +24,10 @@ public class StudentLoginService {
 		boolean valid=false;
 	    Validation.rollNoValidater(rollNo);
 		Validation.mobNoValidater(mobNo);
-		valid=StudentDAO.findStudent(rollNo, mobNo);
+		
+		Student stud=new Student(rollNo,mobNo);
+		
+		valid=StudentDAO.findStudent(stud);
 		
 		return valid;
 	}

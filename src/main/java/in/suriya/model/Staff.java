@@ -14,18 +14,21 @@ public class Staff {
 	
 
     public Staff(String name,long mobNo,String password){
-    	this.setName(name);
-    	this.setMobNo(mobNo);
-    	this.setPassword(password);
+    	
+    	this.name=name;
+    	this.mobNo=mobNo;
+    	this.password=password;
+    }
+
+    public Staff(long mobNo,String password){
+    	
+    	this.mobNo=mobNo;
+    	this.password=password;
     }
 
     
     public String getName() {
 		return name;
-	}
-    
-    public void setName(String name) {
-		this.name = name;
 	}
 
 
@@ -33,16 +36,10 @@ public class Staff {
 		return mobNo;
 	}
 
-	public void setMobNo(long mobNo) {
-		this.mobNo = mobNo;
-	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	} 
      
 }

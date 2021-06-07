@@ -101,18 +101,18 @@ public class StudentDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static boolean findStudent(long rollNo,long mobNo) throws ClassNotFoundException, SQLException {
+	public static boolean findStudent(Student student) throws ClassNotFoundException, SQLException {
 		boolean isValid=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		ResultSet rs=null;
 		try {
 		     connection=ConnectionUtil.getConnection();
-             String sql="select * from student where rollno=? and mobno=?";
+             String sql="select (rollno) from student where rollno=? and mobno=?";
         
              pst=connection.prepareStatement(sql);
-             pst.setLong(1, rollNo);
-             pst.setLong(2, mobNo);
+             pst.setLong(1,student.getRollNo());
+             pst.setLong(2,student.getMobNo());
         
              rs =pst.executeQuery();
              while(rs.next()) {
@@ -142,7 +142,7 @@ public class StudentDAO {
 	 * @throws SQLException
 	 */
 	
-	 public static boolean updatePayment(long rollNo,int fee,String paymentStatus) throws ClassNotFoundException, SQLException {
+	 public static boolean updatePayment(Student student) throws ClassNotFoundException, SQLException {
 	    	boolean isUpdate=false;
 	    	Connection connection=null;
 			PreparedStatement pst=null;
@@ -152,9 +152,9 @@ public class StudentDAO {
 			   String sql="update student set fee=?, payment_status=? where rollno=? ";
 			
 			   pst=connection.prepareStatement(sql);
-			   pst.setInt(1,fee);
-			   pst.setString(2,paymentStatus);
-			   pst.setLong(3,rollNo);
+			   pst.setInt(1,student.getFee());
+			   pst.setString(2,student.getPaymentDetails());
+			   pst.setLong(3,student.getRollNo());
 			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
@@ -225,7 +225,7 @@ public class StudentDAO {
 			try {
 			     connection=ConnectionUtil.getConnection();
 				 
-                 String sql="select *from student order by rollno";
+                 String sql="select * from student order by rollno";
                  st=connection.createStatement();
 	             rs =st.executeQuery(sql);
 	             while(rs.next()) {
@@ -275,7 +275,7 @@ public class StudentDAO {
 			try {
 			     connection=ConnectionUtil.getConnection();
 
-	             String sql="select *from student where rollno=?";
+	             String sql="select * from student where rollno=?";
 	             pst=connection.prepareStatement(sql);
 	             pst.setLong(1, rollNo);
 	             

@@ -36,8 +36,7 @@ public class DisplayPersonalDetailsServlet extends HttpServlet {
 		    response.sendRedirect("displaypersonaldetails.jsp");
 		
 		}catch(Exception e) {
-			String message = e.getMessage();
-		    response.sendRedirect("studentoperation.jsp?infoMessage="+message);
+		    response.sendRedirect("studentoperation.jsp");
 
 		}
 	

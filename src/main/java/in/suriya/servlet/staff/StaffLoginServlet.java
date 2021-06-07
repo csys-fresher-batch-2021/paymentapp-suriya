@@ -43,7 +43,7 @@ public class StaffLoginServlet extends HttpServlet {
 			  
 		  }else {
 			
-			  response.sendRedirect("stafflogin.jsp?infoMessage=invalid Login Credentials");
+			  response.sendRedirect("stafflogin.jsp?errorMessage=invalid Login Credentials");
 			  
 		  }
 		}catch(Exception e) {

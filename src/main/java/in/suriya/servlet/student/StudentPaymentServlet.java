@@ -34,13 +34,13 @@ public class StudentPaymentServlet extends HttpServlet {
 			  boolean paymentStatus = StudentPaymentService.payment(fee,rollNo);
 
 			 if (paymentStatus) {
-				  String message = "payment sucessfully";
+				  String message = "payment sucessfull";
 				  response.sendRedirect("studentoperation.jsp?infoMessage=" + message);
 				}
 			}catch(Exception e) {
 				
 				  String message =e.getMessage();
-				  response.sendRedirect("studentpayment.jsp?infoMessage=" + message);
+				  response.sendRedirect("studentpayment.jsp?errorMessage=" + message);
 
 			}
 			

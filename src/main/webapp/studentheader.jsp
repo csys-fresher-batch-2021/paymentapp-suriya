@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
-String loggedInStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
+//String loggedInStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
 
 %>
@@ -39,14 +39,14 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <% if(tempLoginStudent!= null){  %>
   	           <li class="nav-item active">
-                 <a class="nav-link">Welcome<%=loggedInStudent %></a>
+                 <a class="nav-link" href="studentoperation.jsp">Welcome <%=tempLoginStudent %></a>
                </li>
               <li class="nav-item active">
                  <a class="nav-link" href="StudentLogoutServlet">Logout</a>
                </li>
           <% } else { %>
                <li class="nav-item active">
-                 <a class="nav-link" href="studentlogin.jsp?">Login</a>
+                 <a class="nav-link" href="studentlogin.jsp">Login</a>
                </li>
          <% } %>
       

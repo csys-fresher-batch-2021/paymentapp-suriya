@@ -1,6 +1,7 @@
 package in.suriya.servlet.staff;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import in.suriya.model.Student;
 import in.suriya.service.student.DisplayStudentDetailsService;
@@ -29,13 +32,21 @@ public class DisplayStudentDetailsServlet extends HttpServlet {
 	
 	try {
 		List<Student> displayAllStudentList=DisplayStudentDetailsService.displayStudentList();
-		HttpSession session=request.getSession();
-		session.setAttribute("STUDENT_LIST",displayAllStudentList);
-	    response.sendRedirect("displayallstudentdetails.jsp");
+		//HttpSession session=request.getSession();
+		//session.setAttribute("STUDENT_LIST",displayAllStudentList);
+	    //response.sendRedirect("displayallstudentdetails.jsp");
+		Gson gson = new Gson();
+
+		String jsonProducts = gson.toJson(displayAllStudentList);
+
+		PrintWriter out = response.getWriter();
+
+		out.print(jsonProducts);
+
+		out.flush();
 
 	}catch(Exception e) {
-		String message = e.getMessage();
-	    response.sendRedirect("staffoperation.jsp?infoMessage="+message);
+	    response.sendRedirect("staffoperation.jsp");
 
 	}
 	

@@ -25,8 +25,9 @@ public class StaffLoginAndRegisterService {
 		String staffName=null;
 		Validation.mobNoValidater(mobNo);
 		Validation.passwordValidater(password);
-
-		staffName=StaffDAO.findStaff(mobNo,password);
+		
+		Staff st = new Staff(mobNo,password);
+		staffName=StaffDAO.findStaff(st);
 
 		return staffName;
 	}

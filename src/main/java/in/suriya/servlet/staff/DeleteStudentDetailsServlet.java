@@ -33,14 +33,14 @@ public class DeleteStudentDetailsServlet extends HttpServlet {
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "Student Details does not Exist";
-				  response.sendRedirect("deletestudentdetails.jsp?infoMessage=" + message);
+				  response.sendRedirect("deletestudentdetails.jsp?errorMessage=" + message);
 				  }
 			
 			
 			
 		}catch(Exception e) {
 			String message = e.getMessage();
-			  response.sendRedirect("deletestudentdetails.jsp?infoMessage=" + message);
+			  response.sendRedirect("deletestudentdetails.jsp?errorMessage=" + message);
 		}
 
 	

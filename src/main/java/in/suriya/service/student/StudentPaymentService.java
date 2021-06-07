@@ -1,6 +1,7 @@
 package in.suriya.service.student;
 
 import in.suriya.dao.StudentDAO;
+import in.suriya.model.Student;
 import in.suriya.util.Validation;
 
 public class StudentPaymentService {
@@ -21,12 +22,13 @@ public class StudentPaymentService {
 		
 		fees=(fees-fee);//reduce amount
 	     if(fees==0){
-	          paymentDetails="Paid";
+	          paymentDetails="SUCCESS";
    	     }else {
-	    	 paymentDetails="pending";
+	    	 paymentDetails="PENDING";
 		   }
-		
-		 billDetails=StudentDAO.updatePayment(rollNum,fees,paymentDetails);
+		 Student stud=new Student(rollNum,fees,paymentDetails);
+		 
+		 billDetails=StudentDAO.updatePayment(stud);
 
 		return billDetails;
 	}

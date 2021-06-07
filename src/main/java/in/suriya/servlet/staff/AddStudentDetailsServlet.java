@@ -36,13 +36,13 @@ public class AddStudentDetailsServlet extends HttpServlet {
 				  String message = "Student Entry Added Sucessfully";
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
-				  response.sendRedirect("addstudentdetails.jsp?infoMessage=Already Exist");
+				  response.sendRedirect("addstudentdetails.jsp?errorMessage=Already Exist");
 				  }
 			
 			
 			
 		}catch(Exception e) {
-			  response.sendRedirect("addstudentdetails.jsp?infoMessage=" + e.getMessage());
+			  response.sendRedirect("addstudentdetails.jsp?errorMessage=" + e.getMessage());
 		}
 		
 	

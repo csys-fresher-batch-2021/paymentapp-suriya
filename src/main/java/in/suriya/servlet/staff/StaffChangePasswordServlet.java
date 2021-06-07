@@ -27,7 +27,6 @@ public class StaffChangePasswordServlet extends HttpServlet {
 			String currentPassword=request.getParameter("currentPassword");
 			String newPassword=request.getParameter("newPassword");
 			
-			//Validation.passwordValidater(currentPassword);
 			
 			HttpSession session=request.getSession();
 			String pass=(String)session.getAttribute("PASSWORD");
@@ -40,18 +39,17 @@ public class StaffChangePasswordServlet extends HttpServlet {
 			 if (valid) {
 				  String message = "password changed sucessfully";
 				  session.setAttribute("PASSWORD",newPassword);
-
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "password already exist";
-				  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + message);
+				  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + message);
 
 			  }
 			 
 			
 			
 		}catch(Exception e) {
-			  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + e.getMessage());
+			  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + e.getMessage());
 		}
 		
 		

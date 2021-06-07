@@ -39,14 +39,14 @@ public class StudentLoginServlet extends HttpServlet {
 
 			}else {
 				String message = "invalid Login Credentials";
-				response.sendRedirect("studentlogin.jsp?infoMessage=" + message);
+				response.sendRedirect("studentlogin.jsp?errorMessage=" + message);
 			}
 			
 			
 			
 		}catch(Exception e) {
 			String message = e.getMessage();
-			response.sendRedirect("studentlogin.jsp?infoMessage=" + message);
+			response.sendRedirect("studentlogin.jsp?errorMessage=" + message);
 			
 		}
 		

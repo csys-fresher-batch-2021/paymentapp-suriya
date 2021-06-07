@@ -16,20 +16,33 @@ public class Student {
 				+ "]";
 	}
        
+       
+       
+       public Student(long rollNo,long MobNo) {
+    	   this.rollNo=rollNo;
+    	   this.mobNo=MobNo;
+      }
+       
       
       public Student(long rollNo,long MobNo,int fee) {
-    	   this.setRollNo(rollNo);
-    	   this.setMobNo(MobNo);
-    	   this.setFee(fee);
+    	   this.rollNo=rollNo;
+    	   this.mobNo=MobNo;
+    	   this.fee=fee;
       }
       
-      
+      public Student(long rollNo,int fee,String paymentStatus) {
+   	      this.rollNo=rollNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+
+     }
+     
       
       public Student(long rollNo,long MobNo,int fee,String paymentStatus) {
-   	   this.setRollNo(rollNo);
-   	   this.setMobNo(MobNo);
-   	   this.setFee(fee);
-   	   this.setPaymentDetails(paymentStatus);
+    	  this.rollNo=rollNo;
+   	      this.mobNo=MobNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
      }
       
       
@@ -38,33 +51,21 @@ public class Student {
     public long getRollNo() {
 		return rollNo;
 	}
-	public void setRollNo(long rollNo) {
-		this.rollNo = rollNo;
-	}
+	
 
 	public long getMobNo() {
 		return mobNo;
 	}
 
-	public void setMobNo(long mobNo) {
-		this.mobNo = mobNo;
-	}
 
 	public int getFee() {
 		return fee;
-	}
-
-	public void setFee(int fee) {
-		this.fee = fee;
 	}
 
 	public String getPaymentDetails() {
 		return paymentDetails;
 	}
 
-	public void setPaymentDetails(String paymentDetails) {
-		this.paymentDetails = paymentDetails;
-	}
 
 	
        
