@@ -14,7 +14,7 @@
 		
 <div align="center">
 <form action="StaffRegisterServlet" method="get">
-<h4>Register</h4>
+<h4> Staff Register</h4>
 <table>
 <tr><td><label for="staffName">Name:</label></td>
         <td> <input type="text" name="staffName" placeholder="Enter name" required autofocus ></td></tr>

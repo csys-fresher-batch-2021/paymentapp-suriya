@@ -24,6 +24,7 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 	   <tr>
 	    <th>RollNo</th>
 	    <th>MobileNo</th>
+	    <th>FeeStructure</th>
 	    <th>Fee</th>
 	    <th>Payment Status</th> 
 	   </tr>
@@ -33,6 +34,7 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 	   <tr>
 	     <td><%=personalList.getRollNo()%></td>
 	     <td><%=personalList. getMobNo() %></td>
+	     <td><%=personalList.getFeeStructure() %></td>
 	     <td><%=personalList.getFee() %></td>
 	     <td><%=personalList.getPaymentDetails() %></td>
 	     

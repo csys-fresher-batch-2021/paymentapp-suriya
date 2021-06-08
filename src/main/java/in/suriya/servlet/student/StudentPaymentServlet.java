@@ -23,6 +23,7 @@ public class StudentPaymentServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		try{
@@ -31,16 +32,17 @@ public class StudentPaymentServlet extends HttpServlet {
 			  HttpSession session=request.getSession();
 			  String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
 			  
-			  boolean paymentStatus = StudentPaymentService.payment(fee,rollNo);
+			  StudentPaymentService payment=new StudentPaymentService();
+			  boolean paymentStatus = payment.payment(fee,rollNo);
 
 			 if (paymentStatus) {
-				  String message = "payment sucessfully";
+				  String message = "payment sucessfull";
 				  response.sendRedirect("studentoperation.jsp?infoMessage=" + message);
 				}
 			}catch(Exception e) {
 				
 				  String message =e.getMessage();
-				  response.sendRedirect("studentpayment.jsp?infoMessage=" + message);
+				  response.sendRedirect("studentpayment.jsp?errorMessage=" + message);
 
 			}
 			

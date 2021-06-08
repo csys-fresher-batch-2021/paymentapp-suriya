@@ -22,27 +22,30 @@ public class AddStudentDetailsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		try {
 			 long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
 			 long mobNo = Validation.parseLong(request.getParameter("mobileNo"), "Invalid Mobile number");
 			 int fee=Validation.parseInt(request.getParameter("fee"),"Invalid Fee");
+			 
+			 AddAndDeleteStudentDetailsService addStudent=new AddAndDeleteStudentDetailsService();
 			
             
-			boolean valid=AddAndDeleteStudentDetailsService.addStudentDetails(rollNo, mobNo, fee);
+			boolean valid=addStudent.addStudentDetails(rollNo, mobNo, fee);
 		
 			 if (valid) {
 				  String message = "Student Entry Added Sucessfully";
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
-				  response.sendRedirect("addstudentdetails.jsp?infoMessage=Already Exist");
+				  response.sendRedirect("addstudentdetails.jsp?errorMessage=Already Exist");
 				  }
 			
 			
 			
 		}catch(Exception e) {
-			  response.sendRedirect("addstudentdetails.jsp?infoMessage=" + e.getMessage());
+			  response.sendRedirect("addstudentdetails.jsp?errorMessage=" + e.getMessage());
 		}
 		
 	

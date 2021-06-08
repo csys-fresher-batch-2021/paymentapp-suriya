@@ -3,6 +3,7 @@ package in.suriya.model;
 public class Student {
 	 private long rollNo;
 	 private long mobNo;
+	 private int feeStructure;
      private int fee;
      private String paymentDetails="Not-Paid";
 	
@@ -16,55 +17,78 @@ public class Student {
 				+ "]";
 	}
        
+       
+       
+       public Student(long rollNo,long mobNo) {
+    	   this.rollNo=rollNo;
+    	   this.mobNo=mobNo;
+      }
+       
       
-      public Student(long rollNo,long MobNo,int fee) {
-    	   this.setRollNo(rollNo);
-    	   this.setMobNo(MobNo);
-    	   this.setFee(fee);
+      public Student(long rollNo,long mobNo,int fee) {
+    	   this.rollNo=rollNo;
+    	   this.mobNo=mobNo;
+    	   this.fee=fee;
       }
       
-      
-      
-      public Student(long rollNo,long MobNo,int fee,String paymentStatus) {
-   	   this.setRollNo(rollNo);
-   	   this.setMobNo(MobNo);
-   	   this.setFee(fee);
-   	   this.setPaymentDetails(paymentStatus);
+      public Student(long rollNo,int fee,String paymentStatus) {
+   	      this.rollNo=rollNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+
      }
       
+      public Student(long rollNo,int feeStructure,int fee,String paymentStatus) {
+   	      this.rollNo=rollNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+
+     }
+     
+      
+      public Student(long rollNo,long mobNo,int fee,String paymentStatus) {
+    	  this.rollNo=rollNo;
+   	      this.mobNo=mobNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+     }
+      
+      public Student(long rollNo,long mobNo,int feeStructure,int fee,String paymentStatus) {
+    	  this.rollNo=rollNo;
+   	      this.mobNo=mobNo;
+   	      this.feeStructure=feeStructure;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+     }
+      public Student(int feeStructure,int fee) {
+    	  this.feeStructure=feeStructure;
+    	  this.fee=fee;
+      }
       
       
       
     public long getRollNo() {
 		return rollNo;
 	}
-	public void setRollNo(long rollNo) {
-		this.rollNo = rollNo;
-	}
+	
 
 	public long getMobNo() {
 		return mobNo;
 	}
-
-	public void setMobNo(long mobNo) {
-		this.mobNo = mobNo;
+	
+	public int getFeeStructure() {
+		return feeStructure;
 	}
+
 
 	public int getFee() {
 		return fee;
-	}
-
-	public void setFee(int fee) {
-		this.fee = fee;
 	}
 
 	public String getPaymentDetails() {
 		return paymentDetails;
 	}
 
-	public void setPaymentDetails(String paymentDetails) {
-		this.paymentDetails = paymentDetails;
-	}
 
 	
        

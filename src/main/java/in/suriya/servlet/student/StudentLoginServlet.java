@@ -28,7 +28,9 @@ public class StudentLoginServlet extends HttpServlet {
 		try {
 			long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
 			long mobNo = Validation.parseLong(request.getParameter("mobileNumber"), "Invalid Mobile number");
-			boolean Valid=StudentLoginService.studentValidater(rollNo, mobNo);			
+			
+			StudentLoginService login=new StudentLoginService();
+			boolean Valid=login.studentValidater(rollNo, mobNo);			
 		
 			if(Valid) {
 				 HttpSession session=request.getSession();
@@ -39,14 +41,14 @@ public class StudentLoginServlet extends HttpServlet {
 
 			}else {
 				String message = "invalid Login Credentials";
-				response.sendRedirect("studentlogin.jsp?infoMessage=" + message);
+				response.sendRedirect("studentlogin.jsp?errorMessage=" + message);
 			}
 			
 			
 			
 		}catch(Exception e) {
 			String message = e.getMessage();
-			response.sendRedirect("studentlogin.jsp?infoMessage=" + message);
+			response.sendRedirect("studentlogin.jsp?errorMessage=" + message);
 			
 		}
 		

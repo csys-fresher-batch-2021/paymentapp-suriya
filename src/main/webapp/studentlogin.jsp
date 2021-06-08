@@ -16,7 +16,7 @@ if((String)session.getAttribute("LOGGED_IN_STUDENT")!=null){
 	<main class="container-fluid">
 <div align="center">
 <form action="StudentLoginServlet" method="get">
-<h4>Signin</h4>
+<h4>Student Signin</h4>
 <table>
    <tr><td><label for="rollNo">Roll Number:</label></td>
        <td><input type="number" name="rollNo"placeholder="Enter 7-digit Roll number" required autofocus></td></tr>
@@ -27,7 +27,13 @@ if((String)session.getAttribute("LOGGED_IN_STUDENT")!=null){
 </table>
 
 <button type="submit">Submit</button>
-<button type="reset">Reset</button>
+<button type="reset">Reset</button><br>
+<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 </form>
 </div>
 	

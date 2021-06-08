@@ -24,11 +24,11 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
      -->
       
       <%//if(tempLoginStaff!=null){ %>
-       <li class="nav-item dropdown ">
+       <li class="nav-item dropdown">
         <a class="nav-link " href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu" aria-labelledby="dropdownId">
-          <a class="dropdown-item" href="#"></a>
-          <a class="dropdown-item" href="#"></a>
+          <a class="dropdown-item" href="#">Add Student Detail</a>
+          <a class="dropdown-item" href="#">Delete Student Detail</a>
         </div>
       </li> 
         <%//} %>
@@ -38,7 +38,7 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <%  if(tempLoginStaff!=null){  %>
   	           <li class="nav-item active">
-                 <a class="nav-link">Welcome<%=loggedInStaff %> </a>
+                 <a class="nav-link" href="staffoperation.jsp">Welcome<%=loggedInStaff %> </a>
                </li>
               <li class="nav-item active">
                  <a class="nav-link" href="StaffLogoutServlet">Logout</a>
@@ -48,10 +48,9 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
                <li class="nav-item active">
                <a class="nav-link" href="stafflogin.jsp?">Login</a>
              </li>
-              <li class="nav-item active">
+             <li class="nav-item active">
                <a class="nav-link" href="staffregister.jsp?">Register</a>
               </li>
-             
            <% } %>
       
       </ul>

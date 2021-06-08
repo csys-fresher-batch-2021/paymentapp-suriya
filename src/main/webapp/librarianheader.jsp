@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
-//String loggedInStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
-String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
+//String loggedInLibrarian=(String)session.getAttribute("LOGGED_IN_LIBRARIAN");
+String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
 
 %>
 
@@ -16,9 +16,15 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
   </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+       <!-- <li class="nav-item active">
+        <a class="nav-link" href="stafflogin.jsp?role=Staff"><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="studentlogin.jsp?role=student"></a>
+      </li>
+      -->
       
-      
-      <%//if(tempLoginStudent!=null){ %>
+      <%//if(tempLoginLibrarian!=null){ %>
        <li class="nav-item dropdown">
         <a class="nav-link " href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -31,16 +37,16 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
     
     
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
-  	    <% if(tempLoginStudent!= null){  %>
+  	    <% if(tempLoginLibrarian!= null){  %>
   	           <li class="nav-item active">
-                 <a class="nav-link" href="studentoperation.jsp">Welcome <%=tempLoginStudent %></a>
+                 <a class="nav-link" href="librarianoperation.jsp">Welcome <%=tempLoginLibrarian %></a>
                </li>
               <li class="nav-item active">
-                 <a class="nav-link" href="StudentLogoutServlet">Logout</a>
+                 <a class="nav-link" href="LibrarianLogoutServlet">Logout</a>
                </li>
           <% } else { %>
                <li class="nav-item active">
-                 <a class="nav-link" href="studentlogin.jsp">Login</a>
+                 <a class="nav-link" href="librarianlogin.jsp">Login</a>
                </li>
          <% } %>
       

@@ -10,6 +10,8 @@ public class ConnectionUtil {
     private ConnectionUtil(){
     	
     }
+    
+
 
     /**
 	 * To get the connection from the Data Base.
@@ -18,7 +20,23 @@ public class ConnectionUtil {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
+    private static String driverClass = System.getenv("spring.datasource.driver-class-name");
+	private static String url = System.getenv("spring.datasource.url");
+	private static String username = System.getenv("spring.datasource.username");
+	private static String password = System.getenv("spring.datasource.password");
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+	
+			// Step 1: Load the database driver into memory ( ClassNotFoundException )
+			Class.forName(driverClass);
+			// Step 2: Get the Database Connection (SQLException)
+			connection = DriverManager.getConnection(url, username, password);
+		return connection;
+	}
+    
+    
+    
+	/*public static Connection Connection() throws ClassNotFoundException, SQLException {
 		String DriverClass = "org.postgresql.Driver";
 		String Url = "jdbc:postgresql://localhost/StudentPaymentApp";
 		String DB_username = "postgres";
@@ -27,7 +45,7 @@ public class ConnectionUtil {
 		Class.forName(DriverClass);
 		
 		return DriverManager.getConnection(Url, DB_username, password);
-	}
+	}*/
 	
 	
 	

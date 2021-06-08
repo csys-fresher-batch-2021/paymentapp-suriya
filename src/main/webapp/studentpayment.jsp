@@ -22,7 +22,13 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
        <td><input type="number" name="fee"placeholder="Enter fee to pay" required autofocus></td></tr>
 </table>
 
-<button type="submit">Submit</button>
+<button type="submit">Submit</button><br>
+<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 </form>
 </div>
 	

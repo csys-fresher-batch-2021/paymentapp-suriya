@@ -22,12 +22,14 @@ public class StaffChangePasswordServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String currentPassword=request.getParameter("currentPassword");
 			String newPassword=request.getParameter("newPassword");
 			
-			//Validation.passwordValidater(currentPassword);
+			StaffChangePasswordService changePass= new StaffChangePasswordService();
+			
 			
 			HttpSession session=request.getSession();
 			String pass=(String)session.getAttribute("PASSWORD");
@@ -35,23 +37,22 @@ public class StaffChangePasswordServlet extends HttpServlet {
 			
 			if(!pass.equals(currentPassword))throw new Exception("Wrong user Password");
             
-			boolean valid=StaffChangePasswordService.changePassword(newPassword,mobNo);
+			boolean valid=changePass.changePassword(newPassword,mobNo);
 		
 			 if (valid) {
 				  String message = "password changed sucessfully";
 				  session.setAttribute("PASSWORD",newPassword);
-
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "password already exist";
-				  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + message);
+				  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + message);
 
 			  }
 			 
 			
 			
 		}catch(Exception e) {
-			  response.sendRedirect("staffchangepassword.jsp?infoMessage=" + e.getMessage());
+			  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + e.getMessage());
 		}
 		
 		

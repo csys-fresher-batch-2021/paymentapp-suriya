@@ -21,7 +21,10 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <br/>
 <a href="deletestudentdetails.jsp">Remove student</a>
 <br/>
-<a href="DisplayStudentDetailsServlet">Student Details</a>
+<a href="displayallstudentdetails.jsp">Student Details</a>
+<br/>
+<a href="feestructure.jsp">Fee structure</a>
+<br/>
 </main>
 </body>
 </html>

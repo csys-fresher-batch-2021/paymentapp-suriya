@@ -5,13 +5,8 @@ import in.suriya.util.Validation;
 import in.suriya.dao.StaffDAO;
 
 public class StaffLoginAndRegisterService {
-	    private StaffLoginAndRegisterService() {
-	    	//Default constructor
-	    }
 	
-	  
-	   
-	   
+	   StaffDAO staffDao=new StaffDAO();
 	   
 	   /**checks and validates for credentials
 	    * 
@@ -21,12 +16,13 @@ public class StaffLoginAndRegisterService {
 	 * @throws Exception 
 	    */
 	    
-		public static String staffValidater(long mobNo, String password) throws Exception {
-		String staffName=null;
+		public String staffValidater(long mobNo, String password) throws Exception {
+	    String staffName=null;
 		Validation.mobNoValidater(mobNo);
 		Validation.passwordValidater(password);
-
-		staffName=StaffDAO.findStaff(mobNo,password);
+		
+		Staff st = new Staff(mobNo,password);
+		staffName=staffDao.findStaff(st);
 
 		return staffName;
 	}
@@ -42,12 +38,14 @@ public class StaffLoginAndRegisterService {
 		 */
 		
 		
-		public static boolean registerStaff(String name,long mobNo, String password) throws Exception {
+		public  boolean registerStaff(String name,long mobNo, String password) throws Exception {
+		   
 			boolean isSuccess = false;
 			Validation.mobNoValidater(mobNo);
 			Validation.passwordValidater(password);
 			Staff st = new Staff(name,mobNo,password);
-			isSuccess= StaffDAO.saveStaff(st);
+			
+			isSuccess= staffDao.saveStaff(st);
 			
 			return isSuccess;
 		}
