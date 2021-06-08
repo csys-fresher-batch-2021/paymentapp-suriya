@@ -5,12 +5,8 @@ import in.suriya.model.Student;
 import in.suriya.util.Validation;
 
 public class StudentLoginService {
-	private StudentLoginService() {
-		//default constructor
-	}
 
-    
-    
+	StudentDAO studentDao=new StudentDAO();
     
     /**checks and validates the credentials
      * 
@@ -20,14 +16,14 @@ public class StudentLoginService {
      * @throws Exception 
      */
     
-     public static boolean studentValidater(long rollNo,long mobNo) throws Exception{
+     public boolean studentValidater(long rollNo,long mobNo) throws Exception{
 		boolean valid=false;
 	    Validation.rollNoValidater(rollNo);
 		Validation.mobNoValidater(mobNo);
 		
 		Student stud=new Student(rollNo,mobNo);
 		
-		valid=StudentDAO.findStudent(stud);
+		valid=studentDao.findStudent(stud);
 		
 		return valid;
 	}

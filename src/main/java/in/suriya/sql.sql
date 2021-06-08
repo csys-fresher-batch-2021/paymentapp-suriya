@@ -1,11 +1,11 @@
 create table staff(
 name varchar(50) not null,
-mobno bigint not null unique,
+mob_no bigint not null unique,
 password varchar(50) not null unique
 );
 
-insert into staff (name,mobno,password) values('Harish',9003750359,'Harish1#');
-insert into staff (name,mobno,password) values('Suriya',9500500452,'Suriya1@');
+insert into staff (name,mob_no,password) values('Harish',9003750359,'Harish1#');
+insert into staff (name,mob_no,password) values('Suriya',9500500452,'Suriya1@');
 
 
 select *from staff;
@@ -14,15 +14,15 @@ drop table staff;
 
 
 create table student(
-rollno bigint not null unique,
-mobno bigint not null,
+roll_no bigint not null unique,
+mob_no bigint not null,
+fee_structure int not null default 1,
 fee int not null,
 payment_status varchar(20) default 'NOTPAID'
 );
 
-insert into student(rollno,mobno,fee) values('1712114',9500500451,75000);
-insert into student(rollno,mobno,fee) values('1712113',9003750351,60000);
-
+insert into student(roll_no,mob_no,fee) values('1712114',9500500451,75000);
+insert into student(roll_no,mob_no,fee) values('1712113',9003750351,60000);
 
 select *from student;
 delete from student;

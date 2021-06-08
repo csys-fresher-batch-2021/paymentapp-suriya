@@ -3,6 +3,7 @@ package in.suriya.model;
 public class Student {
 	 private long rollNo;
 	 private long mobNo;
+	 private int feeStructure;
      private int fee;
      private String paymentDetails="Not-Paid";
 	
@@ -18,15 +19,15 @@ public class Student {
        
        
        
-       public Student(long rollNo,long MobNo) {
+       public Student(long rollNo,long mobNo) {
     	   this.rollNo=rollNo;
-    	   this.mobNo=MobNo;
+    	   this.mobNo=mobNo;
       }
        
       
-      public Student(long rollNo,long MobNo,int fee) {
+      public Student(long rollNo,long mobNo,int fee) {
     	   this.rollNo=rollNo;
-    	   this.mobNo=MobNo;
+    	   this.mobNo=mobNo;
     	   this.fee=fee;
       }
       
@@ -36,15 +37,33 @@ public class Student {
    	      this.paymentDetails=paymentStatus;
 
      }
+      
+      public Student(long rollNo,int feeStructure,int fee,String paymentStatus) {
+   	      this.rollNo=rollNo;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+
+     }
      
       
-      public Student(long rollNo,long MobNo,int fee,String paymentStatus) {
+      public Student(long rollNo,long mobNo,int fee,String paymentStatus) {
     	  this.rollNo=rollNo;
-   	      this.mobNo=MobNo;
+   	      this.mobNo=mobNo;
    	      this.fee=fee;
    	      this.paymentDetails=paymentStatus;
      }
       
+      public Student(long rollNo,long mobNo,int feeStructure,int fee,String paymentStatus) {
+    	  this.rollNo=rollNo;
+   	      this.mobNo=mobNo;
+   	      this.feeStructure=feeStructure;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+     }
+      public Student(int feeStructure,int fee) {
+    	  this.feeStructure=feeStructure;
+    	  this.fee=fee;
+      }
       
       
       
@@ -55,6 +74,10 @@ public class Student {
 
 	public long getMobNo() {
 		return mobNo;
+	}
+	
+	public int getFeeStructure() {
+		return feeStructure;
 	}
 
 

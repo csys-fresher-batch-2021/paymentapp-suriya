@@ -16,13 +16,7 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
   </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-       <!-- <li class="nav-item active">
-        <a class="nav-link" href="stafflogin.jsp?role=Staff"><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="studentlogin.jsp?role=student"></a>
-      </li>
-      -->
+      
       
       <%//if(tempLoginStudent!=null){ %>
        <li class="nav-item dropdown">

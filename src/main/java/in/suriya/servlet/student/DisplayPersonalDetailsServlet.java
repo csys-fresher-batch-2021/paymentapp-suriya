@@ -24,13 +24,15 @@ public class DisplayPersonalDetailsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
 			HttpSession session=request.getSession();
 			String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
 			
-			List<Student> displayPersonalDetails=DisplayStudentDetailsService.displayPersonalDetails(rollNo);
+			DisplayStudentDetailsService dispStudent=new DisplayStudentDetailsService();
+			List<Student> displayPersonalDetails=dispStudent.displayPersonalDetails(rollNo);
 			
 			session.setAttribute("PERSONAL_DETAILS",displayPersonalDetails);
 		    response.sendRedirect("displaypersonaldetails.jsp");

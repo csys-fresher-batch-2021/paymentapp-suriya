@@ -33,6 +33,7 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 	   <tr>
 	    <th>RollNo</th>
 	    <th>MobileNo</th>
+	    <th>FeeStructure</th>
 	    <th>Fee</th>
 	    <th>Payment Status</th> 
 	   </tr>
@@ -68,7 +69,7 @@ function getStudentDetails(){
 		 let content="";
 		for (let studentDetail of studentDetails){
 			
- 				content +="<tr><td>"+ studentDetail.rollNo+ "</td><td>"+ studentDetail.mobNo+"</td><td>"+studentDetail.fee+"</td><td>"+studentDetail.paymentDetails+"</td></tr>";					
+ 				content +="<tr><td>"+ studentDetail.rollNo+ "</td><td>"+ studentDetail.mobNo+"</td><td>"+ studentDetail.feeStructure+"</td><td>"+studentDetail.fee+"</td><td>"+studentDetail.paymentDetails+"</td></tr>";					
 		}
 		console.log(content);
 		document.querySelector("#studentDetail-tbl").innerHTML=content; 

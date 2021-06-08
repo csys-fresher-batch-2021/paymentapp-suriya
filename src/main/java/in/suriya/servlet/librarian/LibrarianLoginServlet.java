@@ -22,14 +22,16 @@ public class LibrarianLoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try{
 			String userName=request.getParameter("userName");
 	        String password = request.getParameter("password");
-	          
-	          
-			  boolean valid = LibrarianLoginService.librarianValidater(userName,password);
+	        
+	        
+	         LibrarianLoginService login=new LibrarianLoginService();
+	         boolean valid = login.librarianValidater(userName,password);
 	          
 			  if (valid) {
 				  HttpSession session=request.getSession();

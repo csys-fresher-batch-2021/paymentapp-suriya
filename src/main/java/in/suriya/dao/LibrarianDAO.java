@@ -9,13 +9,9 @@ import in.suriya.model.Librarian;
 import in.suriya.util.ConnectionUtil;
 
 public class LibrarianDAO {
-      private LibrarianDAO() {
-    	  //default constructor
-      }
       
       
-      
-      public static boolean findLibrarian(Librarian librarian) throws ClassNotFoundException, SQLException {
+      public boolean findLibrarian(Librarian librarian) throws ClassNotFoundException, SQLException {
   		boolean isValid=false;
   		Connection connection=null;
   		PreparedStatement pst=null;

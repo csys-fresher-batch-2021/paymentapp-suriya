@@ -8,6 +8,7 @@ import in.suriya.model.Student;
 
 public class DisplayStudentDetailsService {
 
+	StudentDAO studentDao=new StudentDAO();
 	
 	 /**
      * get details from studentDAO
@@ -17,9 +18,8 @@ public class DisplayStudentDetailsService {
 	 * @throws ClassNotFoundException 
      */
 	
-    public static List<Student> displayStudentList() throws ClassNotFoundException, SQLException{
-    	List<Student> studList=StudentDAO.getStudentDetails();
-    	return studList;
+    public List<Student> displayStudentList() throws ClassNotFoundException, SQLException{
+    	return studentDao.getStudentDetails();
     }
     
     
@@ -32,10 +32,9 @@ public class DisplayStudentDetailsService {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public static List<Student>  displayPersonalDetails(String rollNo) throws ClassNotFoundException, SQLException{
-		long rollNum=Long.parseLong(rollNo);
-    	List<Student> personalDetails = StudentDAO.getPersonalStudentDetails(rollNum);	
-    	return personalDetails;
+	public List<Student>  displayPersonalDetails(String rollNo) throws ClassNotFoundException, SQLException{
+		long rollNum=Long.parseLong(rollNo); 	
+    	return studentDao.getPersonalStudentDetails(rollNum);
     }
     
 }

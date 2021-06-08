@@ -30,7 +30,8 @@ public class StaffRegisterServlet extends HttpServlet {
 			  Long mobileNo =Long.parseLong(request.getParameter("mobileNo"));
 			  String password = request.getParameter("password");
 			 
-			  boolean valid = StaffLoginAndRegisterService.registerStaff(staffName,mobileNo, password);
+			  StaffLoginAndRegisterService register=new StaffLoginAndRegisterService();
+			  boolean valid = register.registerStaff(staffName,mobileNo, password);
               
 			  if (valid) {
 				  HttpSession session=request.getSession();

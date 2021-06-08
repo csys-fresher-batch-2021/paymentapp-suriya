@@ -23,13 +23,14 @@ public class BookRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			 int bookId=Validation.parseInt(request.getParameter("bookId"),"Invalid bookId");
 			 long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
 
-			            
-			boolean valid=BookRegisterService.enrollBook(bookId, rollNo);
+			 BookRegisterService register=new BookRegisterService();
+			 boolean valid=register.enrollBook(bookId, rollNo);
 		
 			 if (valid) {
 				  String message = "book registered sucessfully";

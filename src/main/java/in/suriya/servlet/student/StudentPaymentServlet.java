@@ -23,6 +23,7 @@ public class StudentPaymentServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		try{
@@ -31,7 +32,8 @@ public class StudentPaymentServlet extends HttpServlet {
 			  HttpSession session=request.getSession();
 			  String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
 			  
-			  boolean paymentStatus = StudentPaymentService.payment(fee,rollNo);
+			  StudentPaymentService payment=new StudentPaymentService();
+			  boolean paymentStatus = payment.payment(fee,rollNo);
 
 			 if (paymentStatus) {
 				  String message = "payment sucessfull";

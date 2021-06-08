@@ -5,11 +5,8 @@ import in.suriya.model.Librarian;
 import in.suriya.util.Validation;
 
 public class LibrarianLoginService {
-          private LibrarianLoginService() {
-        	  //deafult constrctor
-           }
           
-          
+	      LibrarianDAO librarianDao=new LibrarianDAO();
           /**
            * librarian validater
            * 
@@ -18,11 +15,11 @@ public class LibrarianLoginService {
            * @return
            * @throws Exception
            */
-          public static boolean librarianValidater(String userName, String password) throws Exception {
+          public boolean librarianValidater(String userName, String password) throws Exception {
       		boolean valid=false;
       		Validation.passwordValidater(password);
             Librarian librarian=new Librarian(userName,password);
-            valid=LibrarianDAO.findLibrarian(librarian);
+            valid=librarianDao.findLibrarian(librarian);
 
       		return valid;
           

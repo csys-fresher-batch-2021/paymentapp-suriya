@@ -5,7 +5,7 @@ import in.suriya.util.Validation;
 
 public class BookRegisterService {
 	
-	
+	BookDAO bookDao=new BookDAO();
 	/**
 	 * enroll book in database
 	 * 
@@ -14,12 +14,12 @@ public class BookRegisterService {
 	 * @return
 	 * @throws Exception
 	 */
-	  public static boolean enrollBook(int bookId,long rollNo) throws Exception {
+	  public boolean enrollBook(int bookId,long rollNo) throws Exception {
     	boolean valid=false;
     	Validation.rollNoValidater(rollNo);
-        valid=BookDAO.enrollBook(bookId,rollNo);
+        valid=bookDao.enrollBook(bookId,rollNo);
         if(valid) {
-        	BookDAO.updateEnrollQuantity(bookId);
+        	bookDao.updateEnrollQuantity(bookId);
         }
     	return valid;
         
@@ -34,12 +34,12 @@ public class BookRegisterService {
 	   * @return
 	   * @throws Exception
 	   */
-	  public static boolean deleteEnrollBook(int bookId,long rollNo) throws Exception {
+	  public boolean deleteEnrollBook(int bookId,long rollNo) throws Exception {
 	    	boolean valid=false;
 	    	Validation.rollNoValidater(rollNo);
-	        valid=BookDAO.deleteErolledBook(bookId,rollNo);
+	        valid=bookDao.deleteErolledBook(bookId,rollNo);
 	        if(valid) {
-	        	BookDAO.cancelEnrollQuantity(bookId);
+	        	bookDao.cancelEnrollQuantity(bookId);
 	        }
 	    	return valid;
 	        

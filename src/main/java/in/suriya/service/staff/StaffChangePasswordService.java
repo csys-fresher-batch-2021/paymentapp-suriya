@@ -7,15 +7,16 @@ import in.suriya.util.Validation;
 
 public class StaffChangePasswordService {
 
+	StaffDAO staffDao=new StaffDAO();
+
 	
-	
-	public static boolean changePassword(String newPassword,long mobNo) throws Exception {
+	public  boolean changePassword(String newPassword,long mobNo) throws Exception {
 		boolean isvalid=false;
 		Validation.passwordValidater(newPassword);	
 		
 		Staff st=new Staff(mobNo,newPassword);
 		
-		isvalid=StaffDAO.updatePassword(st);
+		isvalid=staffDao.updatePassword(st);
 		return isvalid;
 	}
 

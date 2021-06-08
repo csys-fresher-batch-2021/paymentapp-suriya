@@ -25,13 +25,13 @@ public class BookDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static boolean enrollBook(int bookId,long rollNo) throws ClassNotFoundException, SQLException {
+	public boolean enrollBook(int bookId,long rollNo) throws ClassNotFoundException, SQLException {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
-		   String sql="insert into enrolled_book(book_id,book_name,roll_no,mob_no)  select l.book_id,l.book_name,s.rollno,s.mobno from student s,library l where s.rollno=? and l.book_id=? and ? not in(select (roll_no) from enrolled_book where roll_no=? and book_id=?)";
+		   String sql="insert into enrolled_book(book_id,book_name,roll_no,mob_no)  select l.book_id,l.book_name,s.roll_no,s.mob_no from student s,library l where s.roll_no=? and l.book_id=? and ? not in(select (roll_no) from enrolled_book where roll_no=? and book_id=?)";
 
 		   pst=connection.prepareStatement(sql);
 		   pst.setLong(1,rollNo);
@@ -62,7 +62,7 @@ public class BookDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static boolean deleteErolledBook(int bookId,long rollNo ) throws ClassNotFoundException, SQLException {
+	public boolean deleteErolledBook(int bookId,long rollNo ) throws ClassNotFoundException, SQLException {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
@@ -97,7 +97,7 @@ public class BookDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	 public static boolean updateEnrollQuantity(int bookId) throws ClassNotFoundException, SQLException {
+	 public boolean updateEnrollQuantity(int bookId) throws ClassNotFoundException, SQLException {
 	    	boolean isUpdate=false;
 	    	Connection connection=null;
 			PreparedStatement pst=null;
@@ -130,7 +130,7 @@ public class BookDAO {
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
 	  */
-	 public static boolean cancelEnrollQuantity(int bookId) throws ClassNotFoundException, SQLException {
+	 public boolean cancelEnrollQuantity(int bookId) throws ClassNotFoundException, SQLException {
 	    	boolean isUpdate=false;
 	    	Connection connection=null;
 			PreparedStatement pst=null;
@@ -164,7 +164,7 @@ public class BookDAO {
  * @throws ClassNotFoundException
  * @throws SQLException
  */
-	 public static List<EnrolledBook> getEnrolledBookDetails() throws ClassNotFoundException, SQLException {
+	 public List<EnrolledBook> getEnrolledBookDetails() throws ClassNotFoundException, SQLException {
 		    List<EnrolledBook> enrolledBookList=new ArrayList<>();
 			Connection connection=null;
 			Statement st=null;
@@ -216,7 +216,7 @@ public class BookDAO {
 	  * @throws SQLException
 	  */
 	 
-	 public static List<Book> getBookDetails() throws ClassNotFoundException, SQLException {
+	 public List<Book> getBookDetails() throws ClassNotFoundException, SQLException {
 		    List<Book> bookList=new ArrayList<>();
 			Connection connection=null;
 			Statement st=null;

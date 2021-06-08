@@ -28,10 +28,12 @@ public class DisplayEnrolledBookDetailsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			List<EnrolledBook> displayEnrolledBookList=DisplayBookDetailsService.displayEnrolledBookList();
+			DisplayBookDetailsService dispBook=new DisplayBookDetailsService();
+			List<EnrolledBook> displayEnrolledBookList=dispBook.displayEnrolledBookList();
 		
 			Gson gson = new Gson();
 

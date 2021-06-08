@@ -9,7 +9,7 @@ import in.suriya.model.EnrolledBook;
 
 public class DisplayBookDetailsService {
 	
-	
+	BookDAO bookDao=new BookDAO();
 	/**
 	 * get book list in library
 	 * 
@@ -17,9 +17,8 @@ public class DisplayBookDetailsService {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	 public static List<Book> displayBookList() throws ClassNotFoundException, SQLException{
-	    	List<Book> bookList=BookDAO.getBookDetails();
-	    	return bookList;
+	 public List<Book> displayBookList() throws ClassNotFoundException, SQLException{
+	    	return bookDao.getBookDetails();
 	    }
 	 
 	 
@@ -32,9 +31,8 @@ public class DisplayBookDetailsService {
 	  * @throws SQLException
 	  */
 	 
-	 public static List<EnrolledBook> displayEnrolledBookList() throws ClassNotFoundException, SQLException{
-	    	List<EnrolledBook> enrolledBookList=BookDAO.getEnrolledBookDetails();
-	    	return enrolledBookList;
+	 public List<EnrolledBook> displayEnrolledBookList() throws ClassNotFoundException, SQLException{
+	    	return bookDao.getEnrolledBookDetails();
 	    }
 	    
 

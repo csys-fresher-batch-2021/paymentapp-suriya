@@ -28,13 +28,13 @@ public class DisplayStudentDetailsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	try {
-		List<Student> displayAllStudentList=DisplayStudentDetailsService.displayStudentList();
-		//HttpSession session=request.getSession();
-		//session.setAttribute("STUDENT_LIST",displayAllStudentList);
-	    //response.sendRedirect("displayallstudentdetails.jsp");
+		DisplayStudentDetailsService dispStudent= new DisplayStudentDetailsService();
+		List<Student> displayAllStudentList=dispStudent.displayStudentList();
+
 		Gson gson = new Gson();
 
 		String jsonProducts = gson.toJson(displayAllStudentList);

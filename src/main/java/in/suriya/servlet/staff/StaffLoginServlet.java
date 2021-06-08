@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.suriya.dao.StaffDAO;
 import in.suriya.service.staff.StaffLoginAndRegisterService;
 import in.suriya.util.Validation;
 
@@ -29,8 +30,8 @@ public class StaffLoginServlet extends HttpServlet {
 		  long mobileNumber = Validation.parseLong(request.getParameter("mobileNo"), "Invalid Mobile number");
           String password = request.getParameter("password");
           
-          
-		  String staffName = StaffLoginAndRegisterService.staffValidater(mobileNumber,password);
+          StaffLoginAndRegisterService login=new StaffLoginAndRegisterService();
+		  String staffName = login.staffValidater(mobileNumber,password);
           
 		  if (staffName!=null) {
 			  HttpSession session=request.getSession();

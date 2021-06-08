@@ -27,11 +27,13 @@ public class DisplayBookDetailsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 		try {
-			List<Book> displayBookList=DisplayBookDetailsService.displayBookList();
+			DisplayBookDetailsService dispBook=new DisplayBookDetailsService();
+			List<Book> displayBookList=dispBook.displayBookList();
 		
 			Gson gson = new Gson();
 
