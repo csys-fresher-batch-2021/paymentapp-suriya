@@ -17,7 +17,7 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 	<main class="container-fluid">
 <div align="center">
 <form action="DeleteStudentDetailsServlet" method="get">
-<h4>Delete Student Details</h4>
+<h4>Student Details</h4>
 <table>
   <tr><td><label for="rollNo">Roll Number:</label></td>
         <td> <input type="number" name="rollNo"  placeholder="Enter 7-digit Roll number" required autofocus></td></tr>

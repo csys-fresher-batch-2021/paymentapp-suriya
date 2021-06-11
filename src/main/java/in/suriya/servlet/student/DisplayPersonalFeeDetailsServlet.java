@@ -11,16 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.suriya.model.EnrolledBook;
+import in.suriya.model.Fee;
 import in.suriya.model.Student;
 import in.suriya.service.librarian.DisplayBookDetailsService;
 import in.suriya.service.student.DisplayStudentDetailsService;
 
 /**
- * Servlet implementation class DisplayPersonalDetailsServlet
+ * Servlet implementation class DisplayPersonalFeeDetailsServlet
  */
-@WebServlet("/DisplayPersonalDetailsServlet")
-public class DisplayPersonalDetailsServlet extends HttpServlet {
+@WebServlet("/DisplayPersonalFeeDetailsServlet")
+public class DisplayPersonalFeeDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
     
 
 	/**
@@ -28,20 +30,16 @@ public class DisplayPersonalDetailsServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	
 		try {
 			HttpSession session=request.getSession();
 			String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
 			
-			DisplayStudentDetailsService dispStudent=new DisplayStudentDetailsService();
-			List<Student> displayPersonalDetails=dispStudent.displayPersonalDetails(rollNo);
+			DisplayStudentDetailsService dispFee=new DisplayStudentDetailsService();
+			List<Fee> displayPersonalFeeList=dispFee. displayPersonalFeeDetails(rollNo);
 			
-			DisplayBookDetailsService dispBook=new DisplayBookDetailsService();
-			List<EnrolledBook> displayPersonalEnrolledBookList=dispBook.displayPersonalEnrolledBookList(rollNo);
-			
-			session.setAttribute("PERSONAL_DETAILS",displayPersonalDetails);
-			session.setAttribute("PERSONAL_BOOK_DETAILS",displayPersonalEnrolledBookList);
-		    response.sendRedirect("displaypersonaldetails.jsp");
+			session.setAttribute("PERSONAL_FEE_DETAILS",displayPersonalFeeList);
+		    response.sendRedirect("personalfeedetails.jsp");
 		
 		}catch(Exception e) {
 		    response.sendRedirect("studentoperation.jsp");
@@ -49,10 +47,8 @@ public class DisplayPersonalDetailsServlet extends HttpServlet {
 		}
 	
 	
-	
-	
-	
 	}
 
 	
+
 }

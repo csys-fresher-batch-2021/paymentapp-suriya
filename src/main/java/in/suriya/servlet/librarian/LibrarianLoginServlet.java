@@ -37,7 +37,7 @@ public class LibrarianLoginServlet extends HttpServlet {
 				  HttpSession session=request.getSession();
 				  session.setAttribute("LOGGED_IN_LIBRARIAN",userName);
 				  
-				  String message = "succesfully Logged in"+userName;
+				  String message = "succesfully Logged in "+userName;
 				  response.sendRedirect("librarianoperation.jsp?infoMessage=" + message);
 				  
 			  }else {

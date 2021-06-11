@@ -21,8 +21,15 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <table>
   <tr><td><label for="rollNo">Roll Number:</label></td>
         <td> <input type="number" name="rollNo"  placeholder="Enter 7-digit Roll number" required autofocus></td></tr>
-  <tr><td><label for="feeStructure">Fee Structure(1,2,3,4):</label></td>
-        <td> <input type="number" name="feeStructure"  placeholder="Enter fee strucutre " required></td></tr>
+  <tr><td><label>Fee Structre:</label></td>
+	    <td><select name="feeStructure" id="feeStructure">
+			<option value="1" >oneWay payment</option>
+			<option value="2">twoWay payment</option>
+			<option value="3" >threeWay payment</option>
+			<option value="4">fourWay payment</option>			
+		</select></td></tr>
+  <!-- <tr><td><label for="feeStructure">Fee Structure(1,2,3,4):</label></td>
+        <td> <input type="number" name="feeStructure"  placeholder="Enter fee strucutre " required></td></tr> -->
   
 </table>
 <button type="submit">Submit</button><br>

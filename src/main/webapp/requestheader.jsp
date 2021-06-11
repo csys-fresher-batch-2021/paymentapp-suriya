@@ -19,20 +19,15 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
        <li class="nav-item active">
         <a class="nav-link"> <span class="sr-only">(current)</span></a>
       </li>
+      
       <li class="nav-item active">
-        <a class="nav-link" href="addstudentdetails.jsp">Enroll Student </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="deletestudentdetails.jsp">Delist Student </a>
+        <a class="nav-link" href="DisplaySchemeRequestServlet">Scheme Request </a>
       </li>
        <li class="nav-item active">
-        <a class="nav-link" href="feestructure.jsp">Fee Structure </a>
+        <a class="nav-link" href="DisplayScholarshipRequestServlet">scholarship Request </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="displayallstudentdetails.jsp">Student Details </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="requestpage.jsp">Requests </a>
+        <a class="nav-link" href="DisplayBusRequestServlet">Bus Request </a>
       </li>
      <%} %>
       

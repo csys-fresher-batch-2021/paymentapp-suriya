@@ -16,7 +16,7 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 	<main class="container-fluid">
 <div align="center">
 <form action="StudentPaymentServlet" method="get">
-<h4>Payment details</h4>
+<h4>Fee Details</h4>
 <table>
    <tr><td><label for="fee">Fee:</label></td>
        <td><input type="number" name="fee"placeholder="Enter fee to pay" required autofocus></td></tr>

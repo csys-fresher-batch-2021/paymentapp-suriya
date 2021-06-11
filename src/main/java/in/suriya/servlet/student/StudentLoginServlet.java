@@ -36,7 +36,7 @@ public class StudentLoginServlet extends HttpServlet {
 				 HttpSession session=request.getSession();
 				 session.setAttribute("LOGGED_IN_STUDENT",String.valueOf(rollNo));
 				 
-				 String message = "sucessfully logged in";
+				 String message = "sucessfully logged in ";
 				 response.sendRedirect("studentoperation.jsp?infoMessage=" + message);
 
 			}else {

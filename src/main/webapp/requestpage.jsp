@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%if((String)session.getAttribute("LOGGED_IN_STUDENT")==null){
-	response.sendRedirect("studentlogin.jsp");
-	}
-String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
-session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
+<%if((String)session.getAttribute("LOGGED_IN_STAFF")==null){
+	response.sendRedirect("stafflogin.jsp");
+}
+String tempLoginStaff=(String)session.getAttribute("LOGGED_IN_STAFF");
+session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +12,19 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="studentheader.jsp"></jsp:include>
+<jsp:include page="requestheader.jsp"></jsp:include>
 	<main class="container-fluid">
-<h2>Welcome !!!!!</h2>
+<h2>click requests !!!!!</h2>
 <%
 			String infoMessage = request.getParameter("infoMessage");
 			if (infoMessage!= null) {
 				out.println("<font color='green'>" + infoMessage + "</font>");
 			}
 			%>
-
-
+			<br>
+			
+			
+<br/>
 </main>
 </body>
 </html>

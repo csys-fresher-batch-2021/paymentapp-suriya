@@ -31,12 +31,14 @@ public class StudentDAO {
 		try {
 		    connection=ConnectionUtil.getConnection();
 		
-		    String sql="insert into student(roll_no,mob_no,fee) values(?,?,?)";
+		    String sql="insert into student(name,roll_no,mob_no,fee,location) values(?,?,?,?,?)";
 		
 		    pst=connection.prepareStatement(sql);
-	     	pst.setLong(1,student.getRollNo());
-		    pst.setLong(2,student.getMobNo());
-		    pst.setInt(3,student.getFee());
+	     	pst.setString(1,student.getName());
+	     	pst.setLong(2,student.getRollNo());
+		    pst.setLong(3,student.getMobNo());
+		    pst.setInt(4,student.getFee());
+	     	pst.setString(5,student.getLocation());
 
 		    int rows=pst.executeUpdate();
 		    if(rows==1) {
@@ -266,7 +268,7 @@ public class StudentDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-	             String sql="select (fee)from student where roll_no=?";
+	             String sql="select (fee) from student where roll_no=?";
 	        
 	             pst=connection.prepareStatement(sql);
 	             pst.setLong(1, rollNo);
@@ -285,6 +287,42 @@ public class StudentDAO {
 			}
 		
 	        return fee;
+		}
+	 
+	 
+	 
+	 /**
+	  * update fee
+	  * @param rollNo
+	  * @return
+	  * @throws ClassNotFoundException
+	  * @throws SQLException
+	  */
+	 public boolean setFee(long rollNo,int fee) throws ClassNotFoundException, SQLException {
+	    	boolean isUpdate=false;
+			Connection connection=null;
+			PreparedStatement pst=null;
+			try {
+			     connection=ConnectionUtil.getConnection();
+	             String sql="update student set fee=? where roll_no=?";
+	        
+	             pst=connection.prepareStatement(sql);
+	             pst.setInt(1, fee);
+	             pst.setLong(2, rollNo);
+	             
+	             int rows=pst.executeUpdate();
+			       if(rows==1) {
+				       isUpdate=true;
+				   }
+	             
+			}catch(ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionUtil.close(connection,pst);
+			
+			}
+		
+	        return isUpdate;
 		}
 	 
 	 /**

@@ -26,14 +26,18 @@ public class AddStudentDetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			 Validation.nameValidater(request.getParameter("name"));
+			 Validation.locationValidater(request.getParameter("location"));
+			 String name=request.getParameter("name");
 			 long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
 			 long mobNo = Validation.parseLong(request.getParameter("mobileNo"), "Invalid Mobile number");
-			 int fee=Validation.parseInt(request.getParameter("fee"),"Invalid Fee");
+			 int fee=Validation.parseInt(request.getParameter("type"),"Invalid Fee");
+			 String location=request.getParameter("location");
 			 
 			 AddAndDeleteStudentDetailsService addStudent=new AddAndDeleteStudentDetailsService();
 			
             
-			boolean valid=addStudent.addStudentDetails(rollNo, mobNo, fee);
+			boolean valid=addStudent.addStudentDetails(name,rollNo, mobNo, fee,location);
 		
 			 if (valid) {
 				  String message = "Student Entry Added Sucessfully";

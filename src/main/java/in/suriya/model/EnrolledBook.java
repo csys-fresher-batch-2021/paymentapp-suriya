@@ -7,6 +7,14 @@ public class EnrolledBook {
     private long rollNo;
     private long mobNo;
     private String enrolledDate;
+    
+    
+   public EnrolledBook(int bookId,String bookName,String enrolledDate) {
+    	
+    	this.bookId=bookId;
+    	this.bookName=bookName;
+    	this.enrolledDate=enrolledDate;
+    }
  
     
     public EnrolledBook(int bookId,String bookName,long rollNo,long mobNo,String enrolledDate) {
@@ -16,8 +24,6 @@ public class EnrolledBook {
     	this.rollNo=rollNo;
     	this.mobNo=mobNo;
     	this.enrolledDate=enrolledDate;
-    	
-    	
     }
     public int getBookId() {
 		return bookId;
