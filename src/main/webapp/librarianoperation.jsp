@@ -17,12 +17,14 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 <h2>Welcome  librarian <%=tempLoginLibrarian %>!!!!!</h2>
 <a href="availablebook.jsp">available book </a>
 <br/>
-<a href="registerbook.jsp">Enroll book </a>
+<a href="displayenrolledbookdetails.jsp"> Enrolled book </a>
 <br/>
-<a href="deregisterbook.jsp"> delete Enrolled book </a>
-<br/>
-<a href="displayenrolledbookdetails.jsp"> view Enrolled book </a>
-<br/>
+<%
+			String infoMessage = request.getParameter("infoMessage");
+			if (infoMessage!= null) {
+				out.println("<font color='green'>" + infoMessage + "</font>");
+			}
+			%>
 
 
 </main>

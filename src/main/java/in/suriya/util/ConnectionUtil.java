@@ -34,20 +34,8 @@ public class ConnectionUtil {
 		return connection;
 	}
     
-    
-    
-	/*public static Connection Connection() throws ClassNotFoundException, SQLException {
-		String DriverClass = "org.postgresql.Driver";
-		String Url = "jdbc:postgresql://localhost/StudentPaymentApp";
-		String DB_username = "postgres";
-		String password = "Suriya44**";
-		
-		Class.forName(DriverClass);
-		
-		return DriverManager.getConnection(Url, DB_username, password);
-	}*/
-	
-	
+   
+
 	
 	/**
 	 * To close the connection from the Data Base.

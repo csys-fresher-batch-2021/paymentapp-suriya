@@ -29,11 +29,25 @@ public class DisplayBookDetailsService {
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
-	  */
-	 
-	 public List<EnrolledBook> displayEnrolledBookList() throws ClassNotFoundException, SQLException{
+	  */  
+	  public List<EnrolledBook> displayEnrolledBookList() throws ClassNotFoundException, SQLException{
 	    	return bookDao.getEnrolledBookDetails();
 	    }
+	  
+	  
 	    
-
+      /**
+       * display personal enrolled book details
+       * 
+       * @return
+       * @throws ClassNotFoundException
+       * @throws SQLException
+       */
+	  public List<EnrolledBook> displayPersonalEnrolledBookList(String rollNo) throws ClassNotFoundException, SQLException{
+		    long rollNum=Long.parseLong(rollNo);
+	    	return bookDao.getPersonalEnrolledBookDetails(rollNum);
+	    }
+	  
+	  
+	  
 }

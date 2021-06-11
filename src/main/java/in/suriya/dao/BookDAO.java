@@ -155,6 +155,56 @@ public class BookDAO {
 			
 			return isUpdate;
 	    }
+	 
+	 
+	 
+	 /**
+	  * 
+	  * @param rollNo
+	  * @return
+	  * @throws ClassNotFoundException
+	  * @throws SQLException
+	  */
+	 public List<EnrolledBook> getPersonalEnrolledBookDetails(long rollNo) throws ClassNotFoundException, SQLException {
+		    List<EnrolledBook> enrolledBookList=new ArrayList<>();
+			Connection connection=null;
+			PreparedStatement pst=null;
+			ResultSet rs=null;
+			try {
+			     connection=ConnectionUtil.getConnection();
+				 
+             String sql="select * from enrolled_book where roll_no=?";
+             
+             pst=connection.prepareStatement(sql);
+			 pst.setLong(1,rollNo);
+			
+             rs =pst.executeQuery();
+	             while(rs.next()) {
+	                int bookId=rs.getInt("book_id");
+	                String bookName=rs.getString("book_name");
+	                String enrolledDate=rs.getString("enrolled_date");
+	               
+	                EnrolledBook enrolledBook=new EnrolledBook(bookId,bookName,enrolledDate);
+	    			enrolledBookList.add(enrolledBook);
+	            	 
+	            }
+	             
+			}catch(ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(pst!=null) {
+					pst.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+				ConnectionUtil.close(connection);
+			
+			}
+		
+	        return enrolledBookList;
+		
+		}
 	
 	
 /**

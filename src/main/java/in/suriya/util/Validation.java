@@ -82,7 +82,16 @@ public class Validation {
 	
 	}
 	
-	
+	/**
+	 * salary validater 
+	 * 
+	 * @param salary
+	 * @throws Exception
+	 */
+	public static void salaryValidater(int salary)throws Exception {
+		if(salary>500000)throw new Exception("You are not eligible for scholarship ");
+	    if(salary<=10000)throw new Exception("Income Starts from 10000");
+	}
 	
 	
 	
@@ -122,6 +131,30 @@ public class Validation {
 		}
 	}
 	
+	
+	/**parse string
+	 * 
+	 * @param input
+	 * @param errorMessage
+	 * @return
+	 * @throws Exception
+	 */
+	public static void nameValidater(String input) throws Exception {
+	    if(input.trim()==null||input.trim()==""||input.length()<3)throw new Exception("Invalid name");
+				
+	}
+	
+	
+	/**
+	 * validates location
+	 * 
+	 * @param input
+	 * @throws Exception
+	 */
+	public static void locationValidater(String input) throws Exception {
+	    if(input.trim()==null||input.trim()==""||input.length()<3)throw new Exception("Invalid location");
+				
+	}
 	
 	
 }

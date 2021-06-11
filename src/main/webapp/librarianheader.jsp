@@ -16,13 +16,17 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
   </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-       <!-- <li class="nav-item active">
-        <a class="nav-link" href="stafflogin.jsp?role=Staff"><span class="sr-only">(current)</span></a>
+      <% if(tempLoginLibrarian!= null){  %>
+       <li class="nav-item active">
+        <a class="nav-link" href=""><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="studentlogin.jsp?role=student"></a>
+        <a class="nav-link" href="registerbook.jsp">Enroll Book</a>
       </li>
-      -->
+      <li class="nav-item active">
+        <a class="nav-link" href="deregisterbook.jsp">Delist Enrolled Book</a>
+      </li>
+     <%} %>
       
       <%//if(tempLoginLibrarian!=null){ %>
        <li class="nav-item dropdown">

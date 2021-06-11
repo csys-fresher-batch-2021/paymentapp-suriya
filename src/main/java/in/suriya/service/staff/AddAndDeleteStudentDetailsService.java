@@ -18,14 +18,12 @@ public class AddAndDeleteStudentDetailsService {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean addStudentDetails(long rollNo,long mobNo,int fee)throws Exception {
+	public boolean addStudentDetails(String name,long rollNo,long mobNo,int fee,String location)throws Exception {
 		boolean isSuccess=false;
 		Validation.mobNoValidater(mobNo);
 		Validation.rollNoValidater(rollNo);
-        Validation.feeValidater(fee);
-        if(fee<50000) throw new Exception("fee should be greater than 50000");
-				
-		Student stud=new Student(rollNo,mobNo,fee);
+		
+		Student stud=new Student(name,rollNo,mobNo,fee,location);
         isSuccess=studentDao.saveStudent(stud);
 
         return isSuccess;
