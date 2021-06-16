@@ -20,7 +20,7 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 <body>
 <jsp:include page="studentheader.jsp"></jsp:include>
 	<main class="container-fluid">
-
+<h2>Scholarship Request Status Details</h2>
 <table class="table table-bordered">
 	<thead>
 	   <tr>

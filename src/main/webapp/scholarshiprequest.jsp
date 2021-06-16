@@ -22,6 +22,8 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
 <body>
 <jsp:include page="requestheader.jsp"></jsp:include>
 	<main class="container-fluid">
+<h2>Applied Students List for Scholarship</h2>
+	
 <table class="table table-bordered">
 	<thead>
 	   <tr>

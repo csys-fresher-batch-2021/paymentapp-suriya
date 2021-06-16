@@ -2,6 +2,7 @@ package in.suriya.service.student;
 
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,20 @@ import in.suriya.model.Fee;
 public class StudentScholarshipRequestService {
      
 	StudentDAO studentDao=new StudentDAO();
+	
+	public boolean studentBusRequest(String busRoute,String rollNo) throws Exception {
+		boolean busUpdate=false;
+		String requestStatus="Applied";
+		long rollNum=Long.parseLong(rollNo);
+
+		FeeDAO feeDao=new FeeDAO();
+		if(busRoute.equals("none"))throw new Exception("Select bus Route");
+		feeDao.saveBusRequest(rollNum, busRoute);
+	    busUpdate=feeDao.busRequestUpdate(rollNum,requestStatus);
+		
+	    
+	return busUpdate;
+	}
 	
 	/**
 	 * student payment calculation
@@ -32,8 +47,9 @@ public class StudentScholarshipRequestService {
 		FeeDAO feeDao=new FeeDAO();
 		
 		
-		if(scholarshipStatus.equals("no")&&(firstGraduate==0)&&(govtScheme.equals("none"))&&(busRoute.equals("none")))throw new Exception("your form is rejected//due to lack of details");
+		if(scholarshipStatus.equals("no")&&(firstGraduate==0)&&(govtScheme.equals("none")))throw new Exception("your form is rejected//due to lack of details");
 		
+		//&&(busRoute.equals("none"))
 		Fee fee=new Fee();
 		fee.setRollNo(rollNum);
 		
@@ -44,9 +60,9 @@ public class StudentScholarshipRequestService {
 		{
 			fee.setFirstGraduateRequest("Approved");
 		}	
-		if(!busRoute.equals("none")) {
+		/*if(!busRoute.equals("none")) {
 			fee.setBusRequest("Applied");
-		}
+		}*/
 		if(!govtScheme.equals("none")) {
 			fee.setGovtSchemesRequest("Applied");
 		}
@@ -60,18 +76,19 @@ public class StudentScholarshipRequestService {
 			feeDao.saveScholarshipRequest(rollNum,income);
 		}
 		
-		if(!busRoute.equals("none")) {
+		/*if(!busRoute.equals("none")) {
 			feeDao.saveBusRequest(rollNum, busRoute);
-		}
+		}*/
 		if(!govtScheme.equals("none")) {
 			feeDao.saveSchemeRequest(rollNum, govtScheme);
 		}
 		if(firstGraduate!=0)
 		{
 			 int fees=studentDao.getFee(rollNum);
-			
+			if(fees!=0){
 	    	 fees=fees-(fees*20/100);
 	         studentDao.setFee(rollNum, fees);
+	         }
 		}	
 		
 		

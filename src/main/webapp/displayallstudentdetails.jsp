@@ -18,6 +18,7 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <body>
 <jsp:include page="staffheader.jsp"></jsp:include>
 	<main class="container-fluid">
+	<h3>StudentsList</h3>
     <label> Enter Student ID:</label>
 	<input type="number" id="studentId" oninput="getStudentDetails()" placeholder="Enter student Id" > <br>
 	<label>Status Type:</label>
@@ -31,8 +32,10 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <table class="table table-bordered" id="table">
 	<thead>
 	   <tr>
+	   	<th>Name</th>
 	    <th>RollNo</th>
 	    <th>MobileNo</th>
+	    <th>NativeLocation</th>
 	    <th>FeeStructure</th>
 	    <th>Fee</th>
 	    <th>Payment Status</th> 
@@ -69,7 +72,7 @@ function getStudentDetails(){
 		 let content="";
 		for (let studentDetail of studentDetails){
 			
- 				content +="<tr><td>"+ studentDetail.rollNo+ "</td><td>"+ studentDetail.mobNo+"</td><td>"+ studentDetail.feeStructure+"</td><td>"+studentDetail.fee+"</td><td>"+studentDetail.paymentDetails+"</td></tr>";					
+ 				content +="<tr><td>"+ studentDetail.name+"</td><td>"+ studentDetail.rollNo+ "</td><td>"+ studentDetail.mobNo+"</td><td>"+ studentDetail.location+ "</td><td>"+ studentDetail.feeStructure+"</td><td>"+studentDetail.fee+"</td><td>"+studentDetail.paymentDetails+"</td></tr>";					
 		}
 		console.log(content);
 		document.querySelector("#studentDetail-tbl").innerHTML=content; 

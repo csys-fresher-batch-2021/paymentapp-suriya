@@ -46,6 +46,7 @@ public class DisplayRequestDetailsService {
        
         String busRoute=feeDao.getBusRoute(rollNum);
         
+        if(fee!=0) {
         if(busRoute.equals("tirunelveli")) {
         	fee=fee+8000;
         }
@@ -57,6 +58,7 @@ public class DisplayRequestDetailsService {
         }
    	 
         studentDao.setFee(rollNum, fee);
+        }
      }
      
      feeDao.busRequestDelete(rollNum);
@@ -100,14 +102,15 @@ public class DisplayRequestDetailsService {
 	         
 	         String scheme=feeDao.getscheme(rollNum);
 	         
-	         if(scheme.equals("Prime Minister Special Scholarship Scheme (PMSSS), Assam")) {
-	         	fee=fee-(fee*40/100);
-	         }else {
+	         if(fee!=0) {
+	           if(scheme.equals("Prime Minister Special Scholarship Scheme (PMSSS), Assam")) {
+	         	  fee=fee-(fee*40/100);
+	           }else {
 	        	 fee=fee-(fee*60/100);
-	         }
+	           }
 	         
 	         studentDao.setFee(rollNum, fee);
-	    	 
+	         }
 	    	 
 	     }
 	     feeDao.schemeRequestDelete(rollNum);
@@ -145,10 +148,10 @@ public class DisplayRequestDetailsService {
 	     if(requestStatus.equals("Approved")) {
              
 	    	 int fee=studentDao.getFee(rollNum);
-	    	 fee=fee-(fee*10/100);
-	    	 
-	         studentDao.setFee(rollNum, fee);
-	    	 
+	    	 if(fee!=0) {
+	    	  fee=fee-(fee*10/100);
+	    	  studentDao.setFee(rollNum, fee);
+	    	 }
 	     }
 	     feeDao.scholarshipRequestDelete(rollNum);
 	     

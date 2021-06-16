@@ -97,6 +97,7 @@ create table scheme_request(
 name varchar(50) not null,
 roll_no bigint not null unique,
 mob_no bigint not null,	
+location varchar(100) not null,
 scheme varchar(100) not null,
 request_status varchar(50) not null default 'pending'
 );

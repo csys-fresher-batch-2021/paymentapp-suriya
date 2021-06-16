@@ -20,8 +20,8 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 			if (infoMessage!= null) {
 				out.println("<font color='green'>" + infoMessage + "</font>");
 			}
-			%>
-
+			%><br>
+<a href="displayscholarshipdetails.jsp">Scholarship And Bus Details</a>
 
 </main>
 </body>

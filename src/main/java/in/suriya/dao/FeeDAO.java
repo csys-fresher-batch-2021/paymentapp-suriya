@@ -30,14 +30,14 @@ public class FeeDAO {
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
-		   String sql="insert into fee_details(roll_no,bus,first_graduate,scholarship,govt_scheme) values (?,?,?,?,?)";
-
-		   pst=connection.prepareStatement(sql);
+		  // String sql="insert into fee_details(roll_no,bus,first_graduate,scholarship,govt_scheme) values (?,?,?,?,?)";
+		 String sql="insert into fee_details(roll_no,first_graduate,scholarship,govt_scheme) values (?,?,?,?)";
+           pst=connection.prepareStatement(sql);
 		   pst.setLong(1,fee.getRollNo());
-		   pst.setString(2,fee.getBusRequest());
-		   pst.setString(3,fee.getFirstGraduateRequest());
-		   pst.setString(4,fee.getScholarshipRequest());
-		   pst.setString(5,fee.getGovtSchemesRequest());
+		  // pst.setString(2,fee.getBusRequest());
+		   pst.setString(2,fee.getFirstGraduateRequest());
+		   pst.setString(3,fee.getScholarshipRequest());
+		   pst.setString(4,fee.getGovtSchemesRequest());
 
 		   int rows=pst.executeUpdate();
 		   if(rows==1) {
@@ -91,6 +91,9 @@ public class FeeDAO {
 	}
 	
 	
+	
+	
+	
 	/**
 	 * save scheme request
 	 * 
@@ -106,7 +109,7 @@ public class FeeDAO {
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
-		   String sql="insert into scheme_request(name,roll_no,mob_no,scheme) select s.name,s.roll_no,s.mob_no,? from student s where roll_no=?";
+		   String sql="insert into scheme_request(name,roll_no,mob_no,location,scheme) select s.name,s.roll_no,s.mob_no,s.location,? from student s where roll_no=?";
 
 		   pst=connection.prepareStatement(sql);
 		   pst.setString(1,scheme);
@@ -245,6 +248,7 @@ public class FeeDAO {
 	            	String name=rs.getString("name");
 	                long rollNo=rs.getLong("roll_no");
 	                long mobNo=rs.getLong("mob_no");
+	                String location=rs.getString("location");
 	                String scheme=rs.getString("scheme");
 
 	          
@@ -252,6 +256,7 @@ public class FeeDAO {
 	    		   schemeRequest.setName(name);
 	    		   schemeRequest.setRollNo(rollNo);
 	    		   schemeRequest.setMobNo(mobNo);
+	    		   schemeRequest.setLocation(location);
 	    		   schemeRequest.setScheme(scheme);
 	    		   
 	    			schemeRequestList.add(schemeRequest);
