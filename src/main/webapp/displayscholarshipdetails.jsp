@@ -50,17 +50,17 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <tbody>
   <tr>
     <td>Tirunelveli</td>
-    <td>Tirunelveli old bus stand,Ragavan nagar,n.s.t nagar,Gopal nagar,venkatesh nagar,krishnan kovil street</td>
+    <td>Tirunelveli old bus stand,Ragavan nagar,n.s.t nagar,Gopal nagar,venkatesh nagar,krishnan kovil </td>
     <td>Rs.8000</td>
   </tr>
   <tr>
     <td>Madurai</td>
-    <td>Tirunelveli old bus stand,Ragavan nagar,n.s.t nagar,Gopal nagar,venkatesh nagar,krishnan kovil street</td>
+    <td>Madurai bus stand,Srini nagar,Perumal kovil,Ganapathy colony,Ramesh nagar,Indra nagar</td>
     <td>Rs.10000</td>
   </tr>
   <tr>
     <td>Tuticorin</td>
-    <td>Tirunelveli old bus stand,Ragavan nagar,n.s.t nagar,Gopal nagar,venkatesh nagar,krishnan kovil street</td>
+    <td>Tuticorin bus stand,Shetty nagar,Rahul krishnan nagar,M.G.R nagar,Kumaran colony ,k.G nagar</td>
     <td>Rs.12000</td>
   </tr>
 
