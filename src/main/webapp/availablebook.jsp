@@ -17,6 +17,7 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 <body>
 <jsp:include page="librarianheader.jsp"></jsp:include>
 	<main class="container-fluid">
+	<h2>Available Book Details</h2>
 	  <label> Enter book name:</label>
 	<input type="text" id="bookName" oninput="getBookDetails()" placeholder="Enter book name " > <br>
 	

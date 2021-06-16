@@ -9,7 +9,7 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
 
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.jsp">Home</a>
+  <a class="navbar-brand" href="index.jsp">StudentScholarshipPayment</a>
   <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
       aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,10 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <% if(tempLoginLibrarian!= null){  %>
   	           <li class="nav-item active">
-                 <a class="nav-link" href="librarianoperation.jsp">Welcome <%=tempLoginLibrarian %></a>
+                 <a class="nav-link" href="librarianoperation.jsp">Home</a>
+               </li>
+               <li class="nav-item active">
+                 <a class="nav-link">Welcome <%=tempLoginLibrarian %></a>
                </li>
               <li class="nav-item active">
                  <a class="nav-link" href="LibrarianLogoutServlet">Logout</a>

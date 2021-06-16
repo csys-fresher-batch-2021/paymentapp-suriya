@@ -16,7 +16,7 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 	<main class="container-fluid">
 <div align="center">
 <form action="StudentScholarshipRequestServlet" method="get">
-<h4>Apply Bus & govt.Schemes</h4>
+<h4>Apply Scholarship & govt.Schemes</h4>
 <table>
      <tr><td><label>Do you want to apply for scholarship:</label></td>
              <td><input type="radio" id="yes" name="scholarship" value="yes"onclick="ShowHideText()" >
@@ -32,14 +32,7 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
             </div>
         </td></tr>
             
-              
-        <tr><td><label>Bus Route:</label></td>
-			<td><select name="bus" id="bus">
-				<option value="none" selected>select...</option>
-				<option value="tirunelveli">Tirunelveli</option>
-				<option value="madurai">Madurai</option>	
-				<option value="tuticorin">Tuticorin</option>		
-			</select></td></tr>
+             
     <tr><td><label>First Graduate:</label></td>
 			<td><select name="firstGraduate" id="firstGraduate" required>
 			    <option value="" selected >select...</option>

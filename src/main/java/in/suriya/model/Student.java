@@ -69,6 +69,16 @@ public class Student {
    	      this.fee=fee;
    	      this.paymentDetails=paymentStatus;
      }
+      
+      public Student(String name,long rollNo,long mobNo,String location,int feeStructure,int fee,String paymentStatus) {
+    	  this.name=name;
+    	  this.rollNo=rollNo;
+   	      this.mobNo=mobNo;
+   	      this.location=location;
+   	      this.feeStructure=feeStructure;
+   	      this.fee=fee;
+   	      this.paymentDetails=paymentStatus;
+     }
       public Student(int feeStructure,int fee) {
     	  this.feeStructure=feeStructure;
     	  this.fee=fee;

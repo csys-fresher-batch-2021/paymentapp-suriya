@@ -344,14 +344,16 @@ public class StudentDAO {
                  st=connection.createStatement();
 	             rs =st.executeQuery(sql);
 	             while(rs.next()) {
+	            	String name=rs.getString("name");
 	                long rollNo=rs.getLong("roll_no");
 	                long mobNo=rs.getLong("mob_no");
+	                String location=rs.getString("location");
 	                int feeStructure=rs.getInt("fee_structure");
 	                int fee=rs.getInt("fee");
 	                String paymentStatus=rs.getString("payment_status");
 
 	          
-	    			Student stud=new Student(rollNo,mobNo,feeStructure,fee,paymentStatus);
+	    			Student stud=new Student(name,rollNo,mobNo,location,feeStructure,fee,paymentStatus);
 	    			studentList.add(stud);
 	            	 
 	            }
