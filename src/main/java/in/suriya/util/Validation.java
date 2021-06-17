@@ -78,7 +78,7 @@ public class Validation {
     */
 	
 	public static void feeValidater(int fee)throws Exception {
-		if(fee<=0 || fee>100000)throw new Exception("Invalid Fee");
+		if(fee<=0)throw new Exception("Invalid Fee");
 	
 	}
 	
@@ -139,22 +139,12 @@ public class Validation {
 	 * @return
 	 * @throws Exception
 	 */
-	public static void nameValidater(String input) throws Exception {
-	    if(input.trim()==null||input.trim()==""||input.length()<3)throw new Exception("Invalid name");
-				
-	}
+	public static void nameValidater(String input,String errorMessage) throws Exception {
+		if(input==null||input.trim()==""||input.trim().length()<3)throw new Exception(errorMessage);
+		}
 	
 	
-	/**
-	 * validates location
-	 * 
-	 * @param input
-	 * @throws Exception
-	 */
-	public static void locationValidater(String input) throws Exception {
-	    if(input.trim()==null||input.trim()==""||input.length()<3)throw new Exception("Invalid location");
-				
-	}
+	
 	
 	
 }
