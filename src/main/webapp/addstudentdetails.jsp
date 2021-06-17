@@ -36,7 +36,7 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 			</select></td></tr>
 			
    <tr><td><label for="location">Native Location:</label></td>
-        <td> <input type="text" name="location"  placeholder="Enter location" required ></td></tr>
+        <td> <input type="text" name="location"  placeholder="Enter location"  ></td></tr>
    
 
 

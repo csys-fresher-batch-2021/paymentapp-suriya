@@ -17,7 +17,7 @@
 <h4> Staff Register</h4>
 <table>
 <tr><td><label for="staffName">Name:</label></td>
-        <td> <input type="text" name="staffName" placeholder="Enter name" required autofocus ></td></tr>
+        <td> <input type="text" name="staffName" placeholder="Enter name"   required autofocus ></td></tr>
 
    <tr><td><label for="mobileNo">Mobile Number:</label></td>
        <td><input type="number" name="mobileNo" pattern="[6-9][0-9]{9}" placeholder="Enter mobile number" required ></td></tr>
@@ -28,7 +28,13 @@
 </table>
 
 <button type="submit">Submit</button>
-<button type="reset">Reset</button>
+<button type="reset">Reset</button><br>
+<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 </form>
 </div>
 

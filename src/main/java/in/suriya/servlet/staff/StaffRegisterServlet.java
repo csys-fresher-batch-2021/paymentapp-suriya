@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.suriya.service.staff.StaffLoginAndRegisterService;
+import in.suriya.util.Validation;
 
 /**
  * Servlet implementation class StaffRegisterServlet
@@ -26,6 +27,7 @@ public class StaffRegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try{
+			  Validation.nameValidater(request.getParameter("staffName"),"invalid name");
 			  String staffName=request.getParameter("staffName");
 			  Long mobileNo =Long.parseLong(request.getParameter("mobileNo"));
 			  String password = request.getParameter("password");
