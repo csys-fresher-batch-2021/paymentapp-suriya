@@ -17,15 +17,11 @@ import in.suriya.util.Validation;
 @WebServlet("/StudentScholarshipRequestServlet")
 public class StudentScholarshipRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-
-	/**
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		try{   
 			  int salary=1;
 			  String scholarshipStatus=request.getParameter("scholarship");
@@ -33,19 +29,14 @@ public class StudentScholarshipRequestServlet extends HttpServlet {
 				  salary=Validation.parseInt(request.getParameter("salary"),"Enter Annual Income");
 				  Validation.salaryValidater(salary);
 			  }
-			  
-              String busRoute=request.getParameter("bus");
+	          String busRoute=request.getParameter("bus");
               int firstGraduate=Integer.parseInt(request.getParameter("firstGraduate"));
               String govtSchemes=request.getParameter("schemes");
-
-              
-			  HttpSession session=request.getSession();
+              HttpSession session=request.getSession();
 			  String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
-			  
 			  StudentScholarshipRequestService paymentCalc=new StudentScholarshipRequestService();
 			  boolean paymentStatus = paymentCalc.studentScholarshipRequest(scholarshipStatus,salary,busRoute,firstGraduate,govtSchemes,rollNo);
-
-			 if (paymentStatus) {
+			  if (paymentStatus) {
 				  String message = "Scholarship Schemes and Bus Request Submitted ";
 				  response.sendRedirect("studentoperation.jsp?infoMessage=" + message);
 				}
@@ -53,16 +44,8 @@ public class StudentScholarshipRequestServlet extends HttpServlet {
 				  response.sendRedirect("filldetails.jsp?errorMessage=You already applied ");
 			 }
 			}catch(Exception e) {
-				
 				  String message =e.getMessage();
 				  response.sendRedirect("filldetails.jsp?errorMessage=" + message);
-
 			}
-	
-	
-	
 	}
-
-	
-
 }

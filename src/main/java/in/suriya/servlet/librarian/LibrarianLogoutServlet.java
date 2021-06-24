@@ -14,10 +14,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LibrarianLogoutServlet")
 public class LibrarianLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-
-	/**
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
@@ -25,17 +22,9 @@ public class LibrarianLogoutServlet extends HttpServlet {
 		try {
 			HttpSession session=request.getSession();
 			session.setAttribute("LOGGED_IN_LIBRARIAN",null);
-			response.sendRedirect("librarianlogin.jsp?");
-			
+			response.sendRedirect("librarianlogin.jsp?");		
 		}catch(Exception e){
 			System.out.println("Session not removed");
 		}
-		
-		
-		
-		
 	}
-
-	
-
 }

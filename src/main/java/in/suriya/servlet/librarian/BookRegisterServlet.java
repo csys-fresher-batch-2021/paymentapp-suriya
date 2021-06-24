@@ -18,9 +18,7 @@ import in.suriya.util.Validation;
 @WebServlet("/BookRegisterServlet")
 public class BookRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
-	/**
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
@@ -28,28 +26,17 @@ public class BookRegisterServlet extends HttpServlet {
 		try {
 			 int bookId=Validation.parseInt(request.getParameter("bookId"),"Invalid bookId");
 			 long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
-
 			 BookRegisterService register=new BookRegisterService();
 			 boolean valid=register.enrollBook(bookId, rollNo);
-		
 			 if (valid) {
 				  String message = "book registered sucessfully";
                   response.sendRedirect("librarianoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "you already bought this book or invalid book id or invalid roll number";
 				  response.sendRedirect("registerbook.jsp?errorMessage=" + message);
-
 			  }
-			 
-	}catch(Exception e) {
+	     }catch(Exception e) {
 			  response.sendRedirect("registerbook.jsp?errorMessage=" + e.getMessage());
-		}
-		
-	
-	
-	
+		   }
 	}
-
-	
-
 }

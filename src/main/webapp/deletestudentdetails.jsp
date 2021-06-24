@@ -24,18 +24,12 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 
 </table>
 <button type="submit">Submit</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+}%>
 </form>
 </div>
-	
 </main>
-
 </body>
 </html>

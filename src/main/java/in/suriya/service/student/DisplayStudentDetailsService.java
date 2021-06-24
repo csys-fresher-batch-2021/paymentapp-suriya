@@ -9,27 +9,19 @@ import in.suriya.model.Fee;
 import in.suriya.model.Student;
 
 public class DisplayStudentDetailsService {
-
 	StudentDAO studentDao=new StudentDAO();
 	FeeDAO feeDao=new FeeDAO();
-	
 	 /**
-     * get details from studentDAO
-     * 
+     * get details from studentDAO 
      * @return
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
      */
-	
     public List<Student> displayStudentList() throws ClassNotFoundException, SQLException{
     	return studentDao.getStudentDetails();
     }
-    
-    
-    
-   
-	/**display particular student details
-	 * 
+    /**
+     * display particular student details
 	 * @param rollNo
 	 * @return
 	 * @throws SQLException 
@@ -39,14 +31,8 @@ public class DisplayStudentDetailsService {
 		long rollNum=Long.parseLong(rollNo); 	
     	return studentDao.getPersonalStudentDetails(rollNum);
     }
-	
-	
-	
-	
-	
 	/**
-	 * display fee request details
-	 * 
+	 * display fee request details 
 	 * @param rollNo
 	 * @return
 	 * @throws ClassNotFoundException
@@ -56,5 +42,4 @@ public class DisplayStudentDetailsService {
 		long rollNum=Long.parseLong(rollNo); 	
     	return feeDao.getPersonalFeeRequestDetails(rollNum);
     }
-    
 }

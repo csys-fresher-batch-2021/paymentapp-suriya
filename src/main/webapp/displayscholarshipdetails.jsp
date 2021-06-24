@@ -63,7 +63,6 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
     <td>Tuticorin bus stand,Shetty nagar,Rahul krishnan nagar,M.G.R nagar,Kumaran colony ,k.G nagar</td>
     <td>Rs.12000</td>
   </tr>
-
 </tbody>
 
 </table>

@@ -28,23 +28,14 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 			<option value="3" >threeWay payment</option>
 			<option value="4">fourWay payment</option>			
 		</select></td></tr>
-  <!-- <tr><td><label for="feeStructure">Fee Structure(1,2,3,4):</label></td>
-        <td> <input type="number" name="feeStructure"  placeholder="Enter fee strucutre " required></td></tr> -->
-  
 </table>
 <button type="submit">Submit</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+}%>
 </form>
 </div>
-	
 </main>
-
 </body>
 </html>

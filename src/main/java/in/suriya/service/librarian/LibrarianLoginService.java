@@ -5,11 +5,9 @@ import in.suriya.model.Librarian;
 import in.suriya.util.Validation;
 
 public class LibrarianLoginService {
-          
-	      LibrarianDAO librarianDao=new LibrarianDAO();
+          LibrarianDAO librarianDao=new LibrarianDAO();
           /**
-           * librarian validater
-           * 
+           * librarian validater 
            * @param userName
            * @param password
            * @return
@@ -20,11 +18,6 @@ public class LibrarianLoginService {
       		Validation.passwordValidater(password);
             Librarian librarian=new Librarian(userName,password);
             valid=librarianDao.findLibrarian(librarian);
-
-      		return valid;
-          
-          }
-          
-          
-          
+      	   return valid;
+          }     
 }

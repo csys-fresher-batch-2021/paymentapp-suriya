@@ -4,7 +4,6 @@
 if((String)session.getAttribute("LOGGED_IN_STUDENT")!=null){
 	response.sendRedirect("studentoperation.jsp");
 }%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,21 +22,16 @@ if((String)session.getAttribute("LOGGED_IN_STUDENT")!=null){
    
    <tr><td><label for="mobileNumber">Mobile Number:</label></td>
         <td> <input type="number" name="mobileNumber" pattern="[6-9][0-9]{9}"   placeholder="Enter 10-digit Mobile Number" required ></td></tr>
-
 </table>
-
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+	}
+%>
 </form>
 </div>
-	
-	
 </main>	
 </body>
 </html>

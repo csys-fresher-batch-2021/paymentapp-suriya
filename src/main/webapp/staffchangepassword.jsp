@@ -24,21 +24,15 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
    
    <tr><td><label for="newpassword">New Password:</label></td>
         <td> <input type="password" name="newPassword" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16}$"  placeholder="Enter new password" required></td></tr>
-
-
 </table>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br/>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+	}%>
 </form>
 </div>
-	
 </main>
 </body>
 </html>

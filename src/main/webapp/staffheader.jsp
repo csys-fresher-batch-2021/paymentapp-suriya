@@ -5,7 +5,6 @@
 String loggedInStaff=(String)session.getAttribute("LOGGED_IN_STAFF");
 String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
 %>
-
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="index.jsp">StudentScholarshipPayment</a>
@@ -35,7 +34,6 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
         <a class="nav-link" href="requestpage.jsp">Requests </a>
       </li>
      <%} %>
-      
       <%//if(tempLoginStaff!=null){ %>
        <li class="nav-item dropdown">
         <a class="nav-link " href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -46,8 +44,6 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
       </li> 
         <%//} %>
     </ul>
-    
-    
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <%  if(tempLoginStaff!=null){  %>
   	           <li class="nav-item active">
@@ -67,13 +63,8 @@ String tempLoginStaff=(String)session.getAttribute("TEMP_LOGIN_STAFF");
              <li class="nav-item active">
                <a class="nav-link" href="staffregister.jsp?">Register</a>
               </li>
-           <% } %>
-      
+           <% } %>    
       </ul>
-       
-      
-       
-   
   </div>
 </nav>
 </header>

@@ -16,42 +16,25 @@ import in.suriya.util.Validation;
 @WebServlet("/DeleteStudentDetailsServlet")
 public class DeleteStudentDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-
-	/**
+       /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException{
 		try {
-			 long rollNo = Validation.parseLong(request.getParameter("rollNo"), "Invalid Roll number");
-			 
+			 long rollNo = Validation.parseLong(request.getParameter("rollNo"),"Invalid Roll number");
 			 AddAndDeleteStudentDetailsService deleteStudent=new AddAndDeleteStudentDetailsService();
-
-			boolean valid=deleteStudent.deleteStudentDetails(rollNo);
-		
-			 if (valid) {
+             boolean valid=deleteStudent.deleteStudentDetails(rollNo);
+             if(valid){
 				  String message = "Student Entry Deleted Sucessfully";
-				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
-			  }else {
+				  response.sendRedirect("staffoperation.jsp?infoMessage="+ message);
+			  }else{
 				  String message = "Student Details does not Exist";
-				  response.sendRedirect("deletestudentdetails.jsp?errorMessage=" + message);
-				  }
-			
-			
-			
-		}catch(Exception e) {
+				  response.sendRedirect("deletestudentdetails.jsp?errorMessage="+ message);
+			  }
+		}catch(Exception e){
 			String message = e.getMessage();
-			  response.sendRedirect("deletestudentdetails.jsp?errorMessage=" + message);
+		    response.sendRedirect("deletestudentdetails.jsp?errorMessage="+ message);
 		}
-
-	
-	
-	
-	
 	}
-
-	
-
 }

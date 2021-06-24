@@ -17,44 +17,26 @@ import in.suriya.util.Validation;
 @WebServlet("/LibrarianLoginServlet")
 public class LibrarianLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-
-	/**
+   /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try{
 			String userName=request.getParameter("userName");
 	        String password = request.getParameter("password");
-	        
-	        
-	         LibrarianLoginService login=new LibrarianLoginService();
-	         boolean valid = login.librarianValidater(userName,password);
-	          
-			  if (valid) {
+	        LibrarianLoginService login=new LibrarianLoginService();
+	        boolean valid = login.librarianValidater(userName,password);
+	        if (valid) {
 				  HttpSession session=request.getSession();
 				  session.setAttribute("LOGGED_IN_LIBRARIAN",userName);
-				  
 				  String message = "succesfully Logged in "+userName;
-				  response.sendRedirect("librarianoperation.jsp?infoMessage=" + message);
-				  
+				  response.sendRedirect("librarianoperation.jsp?infoMessage=" + message);	  
 			  }else {
-				
 				  response.sendRedirect("librarianlogin.jsp?errorMessage=invalid Login Credentials");
-				  
 			  }
 			}catch(Exception e) {
-				
 				response.sendRedirect("librarianlogin.jsp?errorMessage="+e.getMessage() );
-				
 			}
-			
-	
-	
 	}
-
-	
-
 }

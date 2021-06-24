@@ -8,17 +8,12 @@ public class EnrolledBook {
     private long mobNo;
     private String enrolledDate;
     
-    
-   public EnrolledBook(int bookId,String bookName,String enrolledDate) {
-    	
+    public EnrolledBook(int bookId,String bookName,String enrolledDate) {	
     	this.bookId=bookId;
     	this.bookName=bookName;
     	this.enrolledDate=enrolledDate;
     }
- 
-    
-    public EnrolledBook(int bookId,String bookName,long rollNo,long mobNo,String enrolledDate) {
-    	
+    public EnrolledBook(int bookId,String bookName,long rollNo,long mobNo,String enrolledDate) {	
     	this.bookId=bookId;
     	this.bookName=bookName;
     	this.rollNo=rollNo;
@@ -28,24 +23,16 @@ public class EnrolledBook {
     public int getBookId() {
 		return bookId;
 	}
-    
 	public String getBookName() {
 		return bookName;
 	}
-	
 	public long getRollNo() {
 		return rollNo;
 	}
-	
 	public long getMobNo() {
 		return mobNo;
 	}
-	
 	public String getEnrolledDate() {
 		return enrolledDate;
 	}
-	
-	
-	
-	
 }

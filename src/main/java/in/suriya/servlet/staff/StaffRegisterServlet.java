@@ -18,47 +18,32 @@ import in.suriya.util.Validation;
 @WebServlet("/StaffRegisterServlet")
 public class StaffRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-
-	/**
+       /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try{
 			  Validation.nameValidater(request.getParameter("staffName"),"invalid name");
 			  String staffName=request.getParameter("staffName");
 			  Long mobileNo =Long.parseLong(request.getParameter("mobileNo"));
 			  String password = request.getParameter("password");
-			 
 			  StaffLoginAndRegisterService register=new StaffLoginAndRegisterService();
 			  boolean valid = register.registerStaff(staffName,mobileNo, password);
-              
-			  if (valid) {
+              if(valid) {
 				  HttpSession session=request.getSession();
 				  session.setAttribute("LOGGED_IN_STAFF",staffName);
 				  session.setAttribute("PASSWORD",password);
 				  session.setAttribute("STAFF_MOBNO",mobileNo);
-
-				  
 				  String message = "succesfully Registered"+staffName;
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "Already Exist";
 				  response.sendRedirect("staffregister.jsp?infoMessage=" + message);
 				  }
-			  
-			  
-		  }catch(Exception e) {
+		}catch(Exception e) {
 				String message = e.getMessage();
 				response.sendRedirect("staffregister.jsp?errorMessage=" + message);
-				
-			}
-		
-		
+    		}
 	}
-
-	
-
 }

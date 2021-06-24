@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-
-
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="index.jsp">StudentScholarshipPayment</a>
@@ -17,9 +15,7 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#"></a>
-      </li>
-     
-        
+      </li>   
   </div>
 </nav>
 </header>

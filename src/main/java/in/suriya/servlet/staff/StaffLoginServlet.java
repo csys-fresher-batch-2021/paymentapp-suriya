@@ -18,45 +18,31 @@ import in.suriya.util.Validation;
 @WebServlet("/StaffLoginServlet")
 public class StaffLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-
-	/**
+   /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IllegalArgumentException {
-		
 		try{
 		  long mobileNumber = Validation.parseLong(request.getParameter("mobileNo"), "Invalid Mobile number");
           String password = request.getParameter("password");
-          
           StaffLoginAndRegisterService login=new StaffLoginAndRegisterService();
 		  String staffName = login.staffValidater(mobileNumber,password);
-          
-		  if (staffName!=null) {
+          if(staffName!=null){
 			  HttpSession session=request.getSession();
 			  session.setAttribute("LOGGED_IN_STAFF",staffName);
-			  session.setAttribute("PASSWORD",password);//to use in change password
+			  session.setAttribute("PASSWORD",password);
 			  session.setAttribute("STAFF_MOBNO",mobileNumber);
-			  
-			  String message = "succesfully Logged in"+staffName;
+			  String message= "succesfully Logged in"+staffName;
 			  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
-			  
 		  }else {
-			
 			  response.sendRedirect("stafflogin.jsp?errorMessage=invalid Login Credentials");
-			  
-		  }
+		   }
 		}catch(Exception e) {
-			
-			response.sendRedirect("stafflogin.jsp?errorMessage="+e.getMessage() );
-			
-		}
-		
+			response.sendRedirect("stafflogin.jsp?errorMessage="+e.getMessage());
+		 }
 	}
-
-	
-	}
+}
 
 	
 

@@ -16,7 +16,7 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 <jsp:include page="librarianheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <div align="center">
-<form action="deleteRegisterServlet" method="get">
+<form action="DeleteRegisterServlet" method="get">
 <h4>Enroll book for student</h4>
 <table>
   <tr><td><label for="bookId">Book Id:</label></td>
@@ -24,21 +24,16 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
    
    <tr><td><label for="rollNo">Roll Number:</label></td>
        <td><input type="number" name="rollNo"placeholder="Enter 7-digit Roll number" required ></td></tr>
-   
-
 </table>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+}
+%>
 </form>
 </div>
-	
 </main>
 </body>
 </html>

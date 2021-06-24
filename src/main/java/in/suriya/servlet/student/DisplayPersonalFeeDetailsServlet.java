@@ -22,33 +22,20 @@ import in.suriya.service.student.DisplayStudentDetailsService;
 @WebServlet("/DisplayPersonalFeeDetailsServlet")
 public class DisplayPersonalFeeDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-
-	/**
+     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		try {
 			HttpSession session=request.getSession();
 			String rollNo=(String)session.getAttribute("LOGGED_IN_STUDENT");
-			
 			DisplayStudentDetailsService dispFee=new DisplayStudentDetailsService();
 			List<Fee> displayPersonalFeeList=dispFee. displayPersonalFeeDetails(rollNo);
-			
 			session.setAttribute("PERSONAL_FEE_DETAILS",displayPersonalFeeList);
 		    response.sendRedirect("personalfeedetails.jsp");
-		
 		}catch(Exception e) {
 		    response.sendRedirect("studentoperation.jsp");
-
 		}
-	
-	
 	}
-
-	
-
 }

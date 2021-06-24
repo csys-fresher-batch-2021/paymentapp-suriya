@@ -37,23 +37,15 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 			
    <tr><td><label for="location">Native Location:</label></td>
         <td> <input type="text" name="location"  placeholder="Enter location"  ></td></tr>
-   
-
-
 </table>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br/>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+}%>
 </form>
 </div>
-	
 </main>
-
 </body>
 </html>

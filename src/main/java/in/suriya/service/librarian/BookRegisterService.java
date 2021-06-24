@@ -4,11 +4,9 @@ import in.suriya.dao.BookDAO;
 import in.suriya.util.Validation;
 
 public class BookRegisterService {
-	
 	BookDAO bookDao=new BookDAO();
 	/**
-	 * enroll book in database
-	 * 
+	 * enroll book in database 
 	 * @param bookId
 	 * @param rollNo
 	 * @return
@@ -22,13 +20,9 @@ public class BookRegisterService {
         	bookDao.updateEnrollQuantity(bookId);
         }
     	return valid;
-        
         }
-	  
-	  
 	  /**
 	   * delete book in database
-	   * 
 	   * @param bookId
 	   * @param rollNo
 	   * @return
@@ -41,8 +35,6 @@ public class BookRegisterService {
 	        if(valid) {
 	        	bookDao.cancelEnrollQuantity(bookId);
 	        }
-	    	return valid;
-	        
-	        }
-   
+	    return valid;
+	  }
 }
