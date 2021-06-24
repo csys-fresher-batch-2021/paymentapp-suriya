@@ -22,37 +22,21 @@ import in.suriya.service.student.DisplayStudentDetailsService;
 @WebServlet("/DisplayStudentDetailsServlet")
 public class DisplayStudentDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-
-	/**
+       /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	try {
 		DisplayStudentDetailsService dispStudent= new DisplayStudentDetailsService();
 		List<Student> displayAllStudentList=dispStudent.displayStudentList();
-
 		Gson gson = new Gson();
-
 		String jsonProducts = gson.toJson(displayAllStudentList);
-
 		PrintWriter out = response.getWriter();
-
 		out.print(jsonProducts);
-
 		out.flush();
-
-	}catch(Exception e) {
-	    response.sendRedirect("staffoperation.jsp");
-
+	 }catch(Exception e){
+		response.sendRedirect("staffoperation.jsp");
+		}
 	}
-	
-	
-	
-	}
-
-	
 }

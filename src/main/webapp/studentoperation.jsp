@@ -15,14 +15,12 @@ session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);%>
 <jsp:include page="studentheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <h2>Welcome !!!!!</h2>
-<%
-			String infoMessage = request.getParameter("infoMessage");
-			if (infoMessage!= null) {
-				out.println("<font color='green'>" + infoMessage + "</font>");
-			}
-			%><br>
+<%String infoMessage = request.getParameter("infoMessage");
+if (infoMessage!= null) {
+	out.println("<font color='green'>" + infoMessage + "</font>");
+	}%>
+<br>
 <a href="displayscholarshipdetails.jsp">Scholarship And Bus Details</a>
-
 </main>
 </body>
 </html>

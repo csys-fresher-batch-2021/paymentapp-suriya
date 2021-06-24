@@ -15,15 +15,12 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);%>
 <jsp:include page="staffheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <h2>Welcome !!!!!</h2>
-<%
-			String infoMessage = request.getParameter("infoMessage");
-			if (infoMessage!= null) {
-				out.println("<font color='green'>" + infoMessage + "</font>");
-			}
-			%>
-			<br>
-			<a href="staffchangepassword.jsp">change password</a>
-			
+<%String infoMessage = request.getParameter("infoMessage");
+if (infoMessage!= null) {
+	out.println("<font color='green'>" + infoMessage + "</font>");
+	}%>
+<br>
+<a href="staffchangepassword.jsp">change password</a>		
 <br/>
 </main>
 </body>

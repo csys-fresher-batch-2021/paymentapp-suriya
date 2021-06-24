@@ -22,7 +22,6 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 <jsp:include page="studentheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <h2>Fee Details</h2>
-	
 <table class="table table-bordered">
 	<thead>
 	   <tr>
@@ -57,7 +56,6 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 	</tbody>
 </table>
 <h2>Books Taken</h2>
-
 <table class="table table-bordered">
 	<thead>
 	   <tr>
@@ -72,12 +70,10 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 	     <td><%=personalBookList.getBookId()%></td>
 	     <td><%=personalBookList.getBookName()%></td>
 	     <td><%=personalBookList.getEnrolledDate() %></td>
-	    
 	   </tr>  
 	  <% } %>
 	</tbody>
 </table>		
 </main>
-
 </body>
 </html>

@@ -24,21 +24,15 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
    
    <tr><td><label for="rollNo">Roll Number:</label></td>
        <td><input type="number" name="rollNo"placeholder="Enter 7-digit Roll number" required ></td></tr>
-   
-
 </table>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
-
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+	}%>
 </form>
 </div>
-	
 </main>
 </body>
 </html>

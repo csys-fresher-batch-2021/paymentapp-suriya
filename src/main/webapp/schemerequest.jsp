@@ -4,15 +4,13 @@
 <%@page import="in.suriya.model.Student"%>
 <%@page import="in.suriya.model.EnrolledBook"%>
 <%@page import="in.suriya.model.SchemeRequest"%>
-
 <%
 if((String)session.getAttribute("LOGGED_IN_STAFF")==null){
 	response.sendRedirect("stafflogin.jsp");
 }
 String tempLoginStaff=(String)session.getAttribute("LOGGED_IN_STAFF");
 session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
-  List<SchemeRequest> schemeRequestsList=(List<SchemeRequest>)session.getAttribute("SCHEME_REQUEST_LIST");%>
-
+List<SchemeRequest> schemeRequestsList=(List<SchemeRequest>)session.getAttribute("SCHEME_REQUEST_LIST");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +23,6 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
 	<h2>Applied Students List for Government Scheme</h2>
 	<h4>*J&K-60% fee will be paid by government  </h4>
 	<h4>*Assam-40% fee will be paid by government  </h4>
-	
 <table class="table table-bordered">
 	<thead>
 	   <tr>
@@ -50,11 +47,8 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
 	       </td>
 	     <%} %>
 	   </tr>  
-	 
 	</tbody>
 </table>
-	
 </main>
-
 </body>
 </html>

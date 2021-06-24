@@ -22,31 +22,19 @@ import in.suriya.service.student.DisplayStudentDetailsService;
 @WebServlet("/DisplayBusRequestServlet")
 public class DisplayBusRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-
-	/**
+     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			DisplayRequestDetailsService dispBusRequestList= new DisplayRequestDetailsService();
 			List<BusRequest> displayBusRequestList=dispBusRequestList.displayBusRequestList();
-
-			HttpSession session=request.getSession();
+     		HttpSession session=request.getSession();
 			session.setAttribute("BUS_REQUEST_LIST",displayBusRequestList);
 		    response.sendRedirect("busrequest.jsp");
-		
-
 		}catch(Exception e) {
 		    response.sendRedirect("requestpage.jsp");
-
 		}
-		
 	}
-
-	
-
 }

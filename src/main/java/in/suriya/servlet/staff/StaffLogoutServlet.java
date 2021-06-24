@@ -14,30 +14,17 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/StaffLogoutServlet")
 public class StaffLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-
-	/**
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		try {
 			HttpSession session=request.getSession();
 			session.setAttribute("LOGGED_IN_STAFF",null);
 			response.sendRedirect("stafflogin.jsp?");
-			
 		}catch(Exception e){
 			System.out.println("Session not removed");
-		}
-		
-		
-		
-		
+		}	
 	}
-
-	
-	
-
 }

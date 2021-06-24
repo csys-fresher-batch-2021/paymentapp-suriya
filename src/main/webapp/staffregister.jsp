@@ -10,8 +10,7 @@
 </head>
 <body>
 <jsp:include page="staffheader.jsp"></jsp:include>
-	<main class="container-fluid">
-		
+	<main class="container-fluid">	
 <div align="center">
 <form action="StaffRegisterServlet" method="get">
 <h4> Staff Register</h4>
@@ -24,25 +23,15 @@
    
    <tr><td><label for="password">Password:</label></td>
         <td> <input type="password" name="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16}$" placeholder="Enter password" required ></td></tr>
-
 </table>
-
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+	}%>
 </form>
 </div>
-
 </main>
-
-
-
-
-
 </body>
 </html>

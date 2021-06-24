@@ -7,8 +7,7 @@ public class BusRequest {
     private String busRoute;
     private String requestStatus="pending";
     
-    
-     public String getName() {
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -38,13 +37,9 @@ public class BusRequest {
 	public void setRequestStatus(String requestStatus) {
 		this.requestStatus = requestStatus;
 	}
-	
-     @Override
+	 @Override
 	public String toString() {
 		return "BusRequest [name=" + name + ", rollNo=" + rollNo + ", mobNo=" + mobNo + ", busRoute=" + busRoute
 				+ ", requestStatus=" + requestStatus + "]";
-	}
-	
-     
-     
+	}    
 }

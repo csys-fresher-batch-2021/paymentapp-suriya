@@ -20,8 +20,6 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 	<h2>Enrolled Book Details</h2>
     <label> Enter book name:</label>
 	<input type="text" id="bookName" oninput="getEnrolledBookDetails()" placeholder="Enter book name " > 
-	
-	
 <table class="table table-bordered" id="table">
 	<thead>
 	   <tr>
@@ -33,7 +31,6 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 	   </tr>
 	 </thead>
 	 <tbody id="enrolledBookDetail-tbl">
-     
 	</tbody>
 </table>	
 </main>
@@ -46,34 +43,23 @@ function getEnrolledBookDetails(){
 	let url="DisplayEnrolledBookDetailsServlet";
 	fetch(url).then(res=>res.json()).then(res=>{
 		console.log(res);
-		
 		let enrolledBookDetails=res;
 		console.log("Got response from servlet");
-		
 		if(bookName!=null){
 			enrolledBookDetails=filterBookName(enrolledBookDetails,bookName);	
 		}
-		
-		
 		 let content="";
-		for (let enrolledBookDetail of enrolledBookDetails){
-			
+		for (let enrolledBookDetail of enrolledBookDetails){	
  				content +="<tr><td>"+ enrolledBookDetail.bookId+ "</td><td>"+ enrolledBookDetail.bookName+"</td><td>"+enrolledBookDetail.rollNo+"</td><td>"+enrolledBookDetail.mobNo+"</td><td>"+enrolledBookDetail.enrolledDate+"</td></tr>";					
 		}
 		console.log(content);
 		document.querySelector("#enrolledBookDetail-tbl").innerHTML=content; 
-		
 		})
 }
-
-
 function filterBookName(res,bookName) {
 	filteredDetails=res.filter(res=>res.bookName.includes(bookName));
 	return filteredDetails;
 }
-	
-
 </script>
-
 </body>
 </html>

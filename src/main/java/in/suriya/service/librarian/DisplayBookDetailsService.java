@@ -8,11 +8,9 @@ import in.suriya.model.Book;
 import in.suriya.model.EnrolledBook;
 
 public class DisplayBookDetailsService {
-	
 	BookDAO bookDao=new BookDAO();
 	/**
-	 * get book list in library
-	 * 
+	 * get book list in library 
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -20,12 +18,8 @@ public class DisplayBookDetailsService {
 	 public List<Book> displayBookList() throws ClassNotFoundException, SQLException{
 	    	return bookDao.getBookDetails();
 	    }
-	 
-	 
-	 
 	 /**
 	  * get enrolled book list
-	  * 
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
@@ -33,12 +27,8 @@ public class DisplayBookDetailsService {
 	  public List<EnrolledBook> displayEnrolledBookList() throws ClassNotFoundException, SQLException{
 	    	return bookDao.getEnrolledBookDetails();
 	    }
-	  
-	  
-	    
       /**
        * display personal enrolled book details
-       * 
        * @return
        * @throws ClassNotFoundException
        * @throws SQLException
@@ -47,7 +37,4 @@ public class DisplayBookDetailsService {
 		    long rollNum=Long.parseLong(rollNo);
 	    	return bookDao.getPersonalEnrolledBookDetails(rollNum);
 	    }
-	  
-	  
-	  
 }

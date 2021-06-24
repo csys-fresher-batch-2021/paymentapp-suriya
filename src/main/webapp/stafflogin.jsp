@@ -23,9 +23,7 @@ if((String)session.getAttribute("LOGGED_IN_STAFF")!=null){
        <td><input type="number" name="mobileNo" pattern="[6-9][0-9]{9}"  placeholder="Enter 10-digit mobile number"   autofocus></td></tr>
    
    <tr><td><label for="password">Password:</label></td>
-        <td> <input type="password" name="password"  placeholder="pass[0-9][a-z][A-Z][@#$%]" ></td></tr>
-
-<!--  -->
+        <td> <input type="password" name="password"  placeholder="Enter Password" ></td></tr>
 </table>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
@@ -35,10 +33,8 @@ if((String)session.getAttribute("LOGGED_IN_STAFF")!=null){
 				out.println("<font color='red'>" + errorMessage + "</font>");
 			}
 			%>
-
 </form>
 </div>
 </main>
-
 </body>
 </html>

@@ -3,14 +3,12 @@
 <%@page import="java.util.List"%>
 <%@page import="in.suriya.model.Student"%>
 <%@page import="in.suriya.model.Fee"%>
-<%
-if((String)session.getAttribute("LOGGED_IN_STUDENT")==null){
+<%if((String)session.getAttribute("LOGGED_IN_STUDENT")==null){
 	response.sendRedirect("studentlogin.jsp");
 }
 String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
   session.setAttribute("TEMP_LOGIN_STUDENT", tempLoginStudent);
   List<Fee> personalFeeRequestsList=(List<Fee>)session.getAttribute("PERSONAL_FEE_DETAILS");%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,13 +37,10 @@ String tempLoginStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 	     <td><%=personalFeeRequestList.getScholarshipRequest()%></td>
 	     <td><%=personalFeeRequestList.getGovtSchemesRequest()%></td>
 	     <td><%=personalFeeRequestList.getBusRequest()%></td>
-	     
-	    
 	   </tr>  
 	  <% } %>
 	</tbody>
 </table>		
 </main>
-
 </body>
 </html>

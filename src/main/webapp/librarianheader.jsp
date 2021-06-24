@@ -2,11 +2,8 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
-//String loggedInLibrarian=(String)session.getAttribute("LOGGED_IN_LIBRARIAN");
 String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
-
 %>
-
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="index.jsp">StudentScholarshipPayment</a>
@@ -27,7 +24,6 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
         <a class="nav-link" href="deregisterbook.jsp">Delist Enrolled Book</a>
       </li>
      <%} %>
-      
       <%//if(tempLoginLibrarian!=null){ %>
        <li class="nav-item dropdown">
         <a class="nav-link " href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -38,8 +34,6 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
       </li> 
         <%//} %>
     </ul>
-    
-    
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <% if(tempLoginLibrarian!= null){  %>
   	           <li class="nav-item active">
@@ -58,10 +52,6 @@ String tempLoginLibrarian=(String)session.getAttribute("TEMP_LOGIN_LIBRARIAN");
          <% } %>
       
       </ul>
-       
-      
-       
-   
-  </div>
+</div>
 </nav>
 </header>

@@ -6,12 +6,9 @@ import in.suriya.model.Student;
 import in.suriya.util.Validation;
 
 public class AddAndDeleteStudentDetailsService {
-	
 	StudentDAO studentDao=new StudentDAO();
-	
 	/**
-	 * adds student details
-	 * 
+	 * adds student details 
 	 * @param rollNo
 	 * @param mobNo
 	 * @param fees
@@ -22,18 +19,12 @@ public class AddAndDeleteStudentDetailsService {
 		boolean isSuccess=false;
 		Validation.mobNoValidater(mobNo);
 		Validation.rollNoValidater(rollNo);
-		
 		Student stud=new Student(name,rollNo,mobNo,fee,location);
         isSuccess=studentDao.saveStudent(stud);
-
-        return isSuccess;
+      return isSuccess;
 	}
-	
-	
-	
 	/**
-	 * delete student data 
-	 * 
+	 * delete student data  
 	 * @param rollNo
 	 * @return
 	 * @throws Exception
@@ -41,10 +32,8 @@ public class AddAndDeleteStudentDetailsService {
 	public boolean deleteStudentDetails(long rollNo) throws Exception {
 		boolean isDeleted=false;
 		Validation.rollNoValidater(rollNo);
-		
 		isDeleted=studentDao.deleteStudent(rollNo);
-		return isDeleted;
+	  return isDeleted;
 	}
-
 }
 

@@ -1,21 +1,17 @@
 package in.suriya.model;
 
 public class ScholarshipRequest {
-   
-	private String name;
+   private String name;
     private long rollNo;
     private long mobNo;
     private int income;
     private String requestStatus="pending";
-    
-    
-    
+     
     @Override
    	public String toString() {
    		return "ScholarshipRequest [name=" + name + ", rollNo=" + rollNo + ", mobNo=" + mobNo + ", income=" + income
    				+ ", requestStatus=" + requestStatus + "]";
    	}
-    
     
 	public String getName() {
 		return name;
@@ -47,5 +43,4 @@ public class ScholarshipRequest {
 	public void setRequestStatus(String requestStatus) {
 		this.requestStatus = requestStatus;
 	}
-	
 }

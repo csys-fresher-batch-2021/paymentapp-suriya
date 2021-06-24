@@ -19,14 +19,10 @@ session.setAttribute("TEMP_LOGIN_LIBRARIAN", tempLoginLibrarian);%>
 <br/>
 <a href="displayenrolledbookdetails.jsp"> Enrolled book </a>
 <br/>
-<%
-			String infoMessage = request.getParameter("infoMessage");
-			if (infoMessage!= null) {
-				out.println("<font color='green'>" + infoMessage + "</font>");
-			}
-			%>
-
-
+<%String infoMessage = request.getParameter("infoMessage");
+if (infoMessage!= null) {
+	out.println("<font color='green'>" + infoMessage + "</font>");
+	}%>
 </main>
 </body>
 </html>

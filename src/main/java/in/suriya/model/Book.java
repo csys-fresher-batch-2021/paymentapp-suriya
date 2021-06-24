@@ -9,25 +9,14 @@ public class Book {
     	this.bookId=bookId;
     	this.bookName=bookName;
     	this.quantity=quantity;
-    	
-    	
     }
     public int getBookId() {
 		return bookId;
 	}
-	
 	public String getBookName() {
 		return bookName;
 	}
-	
 	public int getQuantity() {
 		return quantity;
 	}
-	
-	
-    
-    
-    
-    
-    
 }

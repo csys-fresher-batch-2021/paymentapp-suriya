@@ -4,15 +4,13 @@
 <%@page import="in.suriya.model.Student"%>
 <%@page import="in.suriya.model.EnrolledBook"%>
 <%@page import="in.suriya.model.ScholarshipRequest"%>
-
 <%
 if((String)session.getAttribute("LOGGED_IN_STAFF")==null){
 	response.sendRedirect("stafflogin.jsp");
 }
 String tempLoginStaff=(String)session.getAttribute("LOGGED_IN_STAFF");
 session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
-  List<ScholarshipRequest> scholarshipRequestsList=(List<ScholarshipRequest>)session.getAttribute("SCHOLARSHIP_REQUEST_LIST");%>
-
+List<ScholarshipRequest> scholarshipRequestsList=(List<ScholarshipRequest>)session.getAttribute("SCHOLARSHIP_REQUEST_LIST");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +21,6 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
 <jsp:include page="requestheader.jsp"></jsp:include>
 	<main class="container-fluid">
 <h2>Applied Students List for Scholarship</h2>
-	
 <table class="table table-bordered">
 	<thead>
 	   <tr>
@@ -46,11 +43,8 @@ session.setAttribute("TEMP_LOGIN_STAFF", tempLoginStaff);
 	       </td>
 	     <%} %>
 	   </tr>  
-	 
 	</tbody>
 </table>
-	
 </main>
-
 </body>
 </html>

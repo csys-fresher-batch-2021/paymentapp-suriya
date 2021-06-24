@@ -16,10 +16,7 @@ import in.suriya.util.Validation;
 @WebServlet("/StaffChangePasswordServlet")
 public class StaffChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-
-	/**
+     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
@@ -27,38 +24,22 @@ public class StaffChangePasswordServlet extends HttpServlet {
 		try {
 			String currentPassword=request.getParameter("currentPassword");
 			String newPassword=request.getParameter("newPassword");
-			
 			StaffChangePasswordService changePass= new StaffChangePasswordService();
-			
-			
 			HttpSession session=request.getSession();
 			String pass=(String)session.getAttribute("PASSWORD");
 			Long mobNo=(Long)session.getAttribute("STAFF_MOBNO");
-			
 			if(!pass.equals(currentPassword))throw new Exception("Wrong user Password");
-            
-			boolean valid=changePass.changePassword(newPassword,mobNo);
-		
-			 if (valid) {
+            boolean valid=changePass.changePassword(newPassword,mobNo);
+		    if(valid){
 				  String message = "password changed sucessfully";
 				  session.setAttribute("PASSWORD",newPassword);
 				  response.sendRedirect("staffoperation.jsp?infoMessage=" + message);
 			  }else {
 				  String message = "password already exist";
 				  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + message);
-
 			  }
-			 
-			
-			
 		}catch(Exception e) {
 			  response.sendRedirect("staffchangepassword.jsp?errorMessage=" + e.getMessage());
-		}
-		
-		
-		
+	   }
 	}
-
-	
-
 }

@@ -4,7 +4,6 @@
 if((String)session.getAttribute("LOGGED_IN_LIBRARIAN")!=null){
 	response.sendRedirect("librarianoperation.jsp");
 }%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,21 +22,15 @@ if((String)session.getAttribute("LOGGED_IN_LIBRARIAN")!=null){
    
    <tr><td><label for="password">Password:</label></td>
         <td> <input type="password" name="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16}$" placeholder="pass[0-9][a-z][A-Z][@#$%]" required ></td></tr>
-
 </table>
-
 <button type="submit">Submit</button>
 <button type="reset">Reset</button><br>
-<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
+<%String errorMessage = request.getParameter("errorMessage");
+if (errorMessage != null) {
+	out.println("<font color='red'>" + errorMessage + "</font>");
+	}%>
 </form>
 </div>
-	
-	
 </main>	
 </body>
 </html>

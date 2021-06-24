@@ -2,11 +2,8 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
-//String loggedInStudent=(String)session.getAttribute("LOGGED_IN_STUDENT");
 String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
-
 %>
-
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="index.jsp">StudentScholarshipPayment</a>
@@ -26,8 +23,7 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
       <li class="nav-item active">
         <a class="nav-link" href="applybus.jsp">Apply Bus</a>
       </li>
-      <%} %>
-      
+      <%} %>    
       <%//if(tempLoginStudent!=null){ %>
        <li class="nav-item dropdown">
         <a class="nav-link " href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -38,8 +34,6 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
       </li> 
         <%//} %>
     </ul>
-    
-    
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
   	    <% if(tempLoginStudent!= null){  %>
   	           <li class="nav-item active">
@@ -56,12 +50,7 @@ String tempLoginStudent=(String)session.getAttribute("TEMP_LOGIN_STUDENT");
                  <a class="nav-link" href="studentlogin.jsp">Login</a>
                </li>
          <% } %>
-      
       </ul>
-       
-      
-       
-   
   </div>
 </nav>
 </header>

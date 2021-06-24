@@ -22,36 +22,21 @@ import in.suriya.service.librarian.DisplayBookDetailsService;
 @WebServlet("/DisplayEnrolledBookDetailsServlet")
 public class DisplayEnrolledBookDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-
-	/**
+  	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			DisplayBookDetailsService dispBook=new DisplayBookDetailsService();
 			List<EnrolledBook> displayEnrolledBookList=dispBook.displayEnrolledBookList();
-		
 			Gson gson = new Gson();
-
 			String jsonProducts = gson.toJson(displayEnrolledBookList);
-
 			PrintWriter out = response.getWriter();
-
 			out.print(jsonProducts);
-
 			out.flush();
-
 		}catch(Exception e) {
 		    response.sendRedirect("librarianoperation.jsp");
-
 		}
-	
 	}
-
-	
-
 }

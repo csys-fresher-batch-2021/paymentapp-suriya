@@ -16,164 +16,124 @@ import in.suriya.model.Student;
 import in.suriya.util.ConnectionUtil;
 
 public class FeeDAO {
-	
 	/**
-	 * 
-	 * 
+	 *save details to data base 
 	 * @param staff
 	 * @return
 	 * @throws Exception 
 	 */
-	public  boolean saveFeeDetails(Fee fee) throws Exception {
+	public boolean saveFeeDetails(Fee fee) throws Exception {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
-		  // String sql="insert into fee_details(roll_no,bus,first_graduate,scholarship,govt_scheme) values (?,?,?,?,?)";
-		 String sql="insert into fee_details(roll_no,first_graduate,scholarship,govt_scheme) values (?,?,?,?)";
+    	   String sql="insert into fee_details(roll_no,first_graduate,scholarship,govt_scheme) values (?,?,?,?)";
            pst=connection.prepareStatement(sql);
 		   pst.setLong(1,fee.getRollNo());
-		  // pst.setString(2,fee.getBusRequest());
 		   pst.setString(2,fee.getFirstGraduateRequest());
 		   pst.setString(3,fee.getScholarshipRequest());
 		   pst.setString(4,fee.getGovtSchemesRequest());
-
 		   int rows=pst.executeUpdate();
 		   if(rows==1) {
 		      isSave=true;
 		   }
-		
 		}catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new Exception("you already applied");
 		}finally {
 		        ConnectionUtil.close(connection,pst);
 		}
-		
 		return isSave;
 	}
-	
-	
 	/**
-	 * save bus request
-	 * 
+	 * save bus request 
 	 * @param fee
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public  boolean saveBusRequest(long rollNo,String busRoute) throws ClassNotFoundException, SQLException {
+	public boolean saveBusRequest(long rollNo,String busRoute) throws ClassNotFoundException, SQLException {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
 		   String sql="insert into bus_request(name,roll_no,mob_no,bus_route) select s.name,s.roll_no,s.mob_no,? from student s where roll_no=?";
-
 		   pst=connection.prepareStatement(sql);
 		   pst.setString(1,busRoute);
 		   pst.setLong(2,rollNo);
-		  
-
 		   int rows=pst.executeUpdate();
 		   if(rows==1) {
 		      isSave=true;
 		   }
-		
 		}catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}finally {
 		        ConnectionUtil.close(connection,pst);
 		}
-		
 		return isSave;
-	}
-	
-	
-	
-	
-	
+	}	
 	/**
-	 * save scheme request
-	 * 
+	 * save scheme request 
 	 * @param rollNo
 	 * @param busRoute
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public  boolean saveSchemeRequest(long rollNo,String scheme) throws ClassNotFoundException, SQLException {
+	public boolean saveSchemeRequest(long rollNo,String scheme) throws ClassNotFoundException, SQLException {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
 		   String sql="insert into scheme_request(name,roll_no,mob_no,location,scheme) select s.name,s.roll_no,s.mob_no,s.location,? from student s where roll_no=?";
-
 		   pst=connection.prepareStatement(sql);
 		   pst.setString(1,scheme);
 		   pst.setLong(2,rollNo);
-		  
-
 		   int rows=pst.executeUpdate();
 		   if(rows==1) {
 		      isSave=true;
 		   }
-		
 		}catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}finally {
 		        ConnectionUtil.close(connection,pst);
 		}
-		
 		return isSave;
 	}
-	
-	
-	
-	
 	/**
-	 * save scholarship request
-	 * 
+	 * save scholarship request 
 	 * @param rollNo
 	 * @param scheme
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public  boolean saveScholarshipRequest(long rollNo,int income) throws ClassNotFoundException, SQLException {
+	public boolean saveScholarshipRequest(long rollNo,int income) throws ClassNotFoundException, SQLException {
 		boolean isSave=false;
 		Connection connection=null;
 		PreparedStatement pst=null;
 		try {
 		   connection=ConnectionUtil.getConnection();
 		   String sql="insert into scholarship_request(name,roll_no,mob_no,family_income) select s.name,s.roll_no,s.mob_no,? from student s where roll_no=?";
-		   		
-
 		   pst=connection.prepareStatement(sql);
 		   pst.setInt(1,income);
 		   pst.setLong(2,rollNo);
-		  
-
 		   int rows=pst.executeUpdate();
 		   if(rows==1) {
 		      isSave=true;
 		   }
-		
 		}catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}finally {
 		        ConnectionUtil.close(connection,pst);
 		}
-		
 		return isSave;
 	}
-	
-	
 	/**
-	 * get bus Request details
-	 * 
+	 * get bus Request details 
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -185,50 +145,30 @@ public class FeeDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-				 
-              String sql="select * from bus_request order by roll_no";
-              st=connection.createStatement();
+                 String sql="select name,roll_no,mob_no,bus_route from bus_request order by roll_no";
+                 st=connection.createStatement();
 	             rs =st.executeQuery(sql);
 	             while(rs.next()) {
 	            	String name=rs.getString("name");
 	                long rollNo=rs.getLong("roll_no");
 	                long mobNo=rs.getLong("mob_no");
 	                String busRoute=rs.getString("bus_route");
-
-	          
-	    		   BusRequest busRequest=new BusRequest();
-	    		   busRequest.setName(name);
-	    		   busRequest.setRollNo(rollNo);
-	    		   busRequest.setMobNo(mobNo);
-	    		   busRequest.setBusRoute(busRoute);
-	    		   
-	    			busRequestList.add(busRequest);
-	            	 
+	    		    BusRequest busRequest=new BusRequest();
+	    		    busRequest.setName(name);
+	    		    busRequest.setRollNo(rollNo);
+	    		    busRequest.setMobNo(mobNo);
+	    		    busRequest.setBusRoute(busRoute);
+	    		  	busRequestList.add(busRequest); 
 	            }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
-				if(st!=null) {
-					st.close();
-				}
-				if(rs!=null) {
-					rs.close();
-				}
-				ConnectionUtil.close(connection);
-			
+				ConnectionUtil.close(connection,st,rs);
 			}
-		
-	        return busRequestList;
-		
+	      return busRequestList;
 		}
-	
-	 
-	 
-	 
-	 /**
-	  * get scheme request details
-	  * 
+	/**
+	  * get scheme request details 
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
@@ -239,10 +179,9 @@ public class FeeDAO {
 			Statement st=null;
 			ResultSet rs=null;
 			try {
-			     connection=ConnectionUtil.getConnection();
-				 
-           String sql="select * from scheme_request order by roll_no";
-           st=connection.createStatement();
+			     connection=ConnectionUtil.getConnection();	 
+                 String sql="select name,roll_no,mob_no,location,scheme from scheme_request order by roll_no";
+                 st=connection.createStatement();
 	             rs =st.executeQuery(sql);
 	             while(rs.next()) {
 	            	String name=rs.getString("name");
@@ -250,42 +189,23 @@ public class FeeDAO {
 	                long mobNo=rs.getLong("mob_no");
 	                String location=rs.getString("location");
 	                String scheme=rs.getString("scheme");
-
-	          
-	    		   SchemeRequest schemeRequest=new SchemeRequest();
-	    		   schemeRequest.setName(name);
-	    		   schemeRequest.setRollNo(rollNo);
-	    		   schemeRequest.setMobNo(mobNo);
-	    		   schemeRequest.setLocation(location);
-	    		   schemeRequest.setScheme(scheme);
-	    		   
-	    			schemeRequestList.add(schemeRequest);
-	            	 
+	    		    SchemeRequest schemeRequest=new SchemeRequest();
+	    		    schemeRequest.setName(name);
+	    		    schemeRequest.setRollNo(rollNo);
+	    		    schemeRequest.setMobNo(mobNo);
+	    		    schemeRequest.setLocation(location);
+	    		    schemeRequest.setScheme(scheme);
+	    		    schemeRequestList.add(schemeRequest); 
 	            }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
-				if(st!=null) {
-					st.close();
-				}
-				if(rs!=null) {
-					rs.close();
-				}
-				ConnectionUtil.close(connection);
-			
+				ConnectionUtil.close(connection,st,rs);
 			}
-		
 	        return schemeRequestList;
-		
 		}
-	 
-	 
-	 
-	 
-	 /**
-	  * get scholarship request details
-	  * 
+	  /**
+	  * get scholarship request details 
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
@@ -297,8 +217,7 @@ public class FeeDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-				 
-                 String sql="select * from scholarship_request order by family_income";
+                 String sql="select name,roll_no,mob_no,family_income from scholarship_request order by family_income";
                  st=connection.createStatement();
 	             rs =st.executeQuery(sql);
 	             while(rs.next()) {
@@ -306,40 +225,22 @@ public class FeeDAO {
 	                long rollNo=rs.getLong("roll_no");
 	                long mobNo=rs.getLong("mob_no");
 	                int income=rs.getInt("family_income");
-
-	          
-	    		   ScholarshipRequest scholarshipRequest=new ScholarshipRequest();
-	    		   scholarshipRequest.setName(name);
-	    		   scholarshipRequest.setRollNo(rollNo);
-	    		   scholarshipRequest.setMobNo(mobNo);
-	    		   scholarshipRequest.setIncome(income);
-	    		   
-	    			scholarshipRequestList.add(scholarshipRequest);
-	            	 
+	    	 	    ScholarshipRequest scholarshipRequest=new ScholarshipRequest();
+	    		    scholarshipRequest.setName(name);
+	    		    scholarshipRequest.setRollNo(rollNo);
+	    		    scholarshipRequest.setMobNo(mobNo);
+	    		    scholarshipRequest.setIncome(income);
+	    			scholarshipRequestList.add(scholarshipRequest);            	 
 	            }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
-				if(st!=null) {
-					st.close();
-				}
-				if(rs!=null) {
-					rs.close();
-				}
-				ConnectionUtil.close(connection);
-			
+				ConnectionUtil.close(connection,st,rs);
 			}
-		
-	        return scholarshipRequestList;
-		
+	      return scholarshipRequestList;
 		}
-	
-	 
-	 
 	 /**
 	  * bus request update
-	  * 
 	  * @param rollNo
 	  * @param busRequest
 	  * @return
@@ -352,33 +253,23 @@ public class FeeDAO {
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="update fee_details set bus=? where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setString(1,busRequest);
 			   pst.setLong(2,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
-			return isUpdate;
+		  return isUpdate;
 	    }
-		
-	
-	 
-	 /**
-	  * scheme request update
-	  * 
+     /**
+	  * scheme request update 
 	  * @param rollNo
 	  * @param busRequest
 	  * @return
@@ -391,33 +282,23 @@ public class FeeDAO {
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="update fee_details set govt_scheme=? where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setString(1,scheme);
 			   pst.setLong(2,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
-			return isUpdate;
+		  return isUpdate;
 	    }
-	 
-	 
-	 
-	 /**
-	  * scholarship request 
-	  * 
+	  /**
+	  * scholarship request  
 	  * @param rollNo
 	  * @param scheme
 	  * @return
@@ -430,72 +311,51 @@ public class FeeDAO {
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="update fee_details set scholarship=? where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setString(1,scholarship);
 			   pst.setLong(2,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
-			return isUpdate;
+		  return isUpdate;
 	    }
-		
-	 
-	 
-	 
 	 /**
-	  * bus request delete 
-	  * 
+	  * bus request delete  
 	  * @param rollNo
 	  * @param busRequest
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
 	  */
-	 
 	 public boolean busRequestDelete(long rollNo) throws ClassNotFoundException, SQLException {
 	    	boolean isUpdate=false;
 	    	Connection connection=null;
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="delete from bus_request where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setLong(1,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-				
+				e.printStackTrace();	
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
 			return isUpdate;
 	    }
-		
-	 
 	 /**
 	  * scheme request delete
-	  * 
 	  * @param rollNo
 	  * @return
 	  * @throws ClassNotFoundException
@@ -507,32 +367,22 @@ public class FeeDAO {
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="delete from scheme_request where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setLong(1,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
 			return isUpdate;
 	    }
-	 
-	 
-	 
 	 /**
-	  * scholarship request
-	  * 
+	  * scholarship request 
 	  * @param rollNo
 	  * @return
 	  * @throws ClassNotFoundException
@@ -544,32 +394,22 @@ public class FeeDAO {
 			PreparedStatement pst=null;
 			try {
 			   connection=ConnectionUtil.getConnection();
-
 			   String sql="delete from scholarship_request where roll_no=?";
-			
 			   pst=connection.prepareStatement(sql);
 			   pst.setLong(1,rollNo);
-			   
-			
 			   int rows=pst.executeUpdate();
 		       if(rows==1) {
 			       isUpdate=true;
 			   }
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				
 			}finally {
 			        ConnectionUtil.close(connection,pst);
 			}
-			
 			return isUpdate;
 	    }
-	 
-	 
-	 
 	 /**
-	  * get bus route
-	  * 
+	  * get bus route 
 	  * @param rollNo
 	  * @return
 	  * @throws ClassNotFoundException
@@ -582,32 +422,22 @@ public class FeeDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-	             String sql="select (bus_route)from bus_request where roll_no=?";
-	        
+	             String sql="select bus_route from bus_request where roll_no=?";
 	             pst=connection.prepareStatement(sql);
 	             pst.setLong(1, rollNo);
-	             
 	             rs =pst.executeQuery();
 	             while(rs.next()) {
 	                   busRoute=rs.getString("bus_route");
-	                  
 	              }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
 				ConnectionUtil.close(connection,pst,rs);
-			
 			}
 		return busRoute;	
 	 }
-	 
-	 
-	 
-	 
-	 /**
-	  * get scheme details
-	  * 
+	  /**
+	  * get scheme details 
 	  * @param rollNo
 	  * @return
 	  * @throws ClassNotFoundException
@@ -620,32 +450,22 @@ public class FeeDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-	             String sql="select (scheme)from scheme_request where roll_no=?";
-	        
+	             String sql="select scheme from scheme_request where roll_no=?";
 	             pst=connection.prepareStatement(sql);
 	             pst.setLong(1, rollNo);
-	             
 	             rs =pst.executeQuery();
 	             while(rs.next()) {
 	                   scheme=rs.getString("scheme");
-	                  
 	              }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
 				ConnectionUtil.close(connection,pst,rs);
-			
 			}
 		return scheme;	
 	 }
-	 
-	 
-	 
-	 
 	 /**
-	  * get details fee request details
-	  * 
+	  * get details fee request details 
 	  * @return
 	  * @throws ClassNotFoundException
 	  * @throws SQLException
@@ -657,47 +477,28 @@ public class FeeDAO {
 			ResultSet rs=null;
 			try {
 			     connection=ConnectionUtil.getConnection();
-				 
-                 String sql="select * from fee_details where roll_no=?";
+                 String sql="select bus,first_graduate,scholarship,govt_scheme from fee_details where roll_no=?";
      			 pst=connection.prepareStatement(sql);
 	             pst.setLong(1, rollNo);
-	             
 	             rs =pst.executeQuery();
 	             while(rs.next()) {
 	            	String busRequest=rs.getString("bus");
 	                String firstGraduate=rs.getString("first_graduate");
 	                String scholarship=rs.getString("scholarship");
 	                String scheme=rs.getString("govt_scheme");
-
-	          
-	    		   Fee feeRequest=new Fee();
-	    		   feeRequest.setRollNo(rollNo);
-	    		   feeRequest.setBusRequest(busRequest);
-	    		   feeRequest.setFirstGraduateRequest(firstGraduate);
-	    		   feeRequest.setScholarshipRequest(scholarship);
-	    		   feeRequest.setGovtSchemesRequest(scheme);
-	    		   
-	    		   feeRequestList.add(feeRequest);
-	    			
-	            	 
+	    		    Fee feeRequest=new Fee();
+	    		    feeRequest.setRollNo(rollNo);
+	    		    feeRequest.setBusRequest(busRequest);
+	    		    feeRequest.setFirstGraduateRequest(firstGraduate);
+	    		    feeRequest.setScholarshipRequest(scholarship);
+	    		    feeRequest.setGovtSchemesRequest(scheme);  
+	    		    feeRequestList.add(feeRequest);	 
 	            }
-	             
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}finally {
-				if(pst!=null) {
-					pst.close();
-				}
-				if(rs!=null) {
-					rs.close();
-				}
-				ConnectionUtil.close(connection);
-			
+				ConnectionUtil.close(connection,pst,rs);
 			}
-		
 	        return feeRequestList;
-		
-		}
-	 
-	 
+	 }
 }
